@@ -1,31 +1,17 @@
-      <li
-        class="list-group-item my-2 d-flex align-items-center justify-content-between"      
-      >
-      
-        <input
-          class="form-check-input mx-2"
-          type="checkbox"
-          value=""
-          aria-label="..."
-          (change)="completeTodo()"
-        />
-       <span   [ngClass]="todo.completed ? 'text-decoration-line-through' : 'text-decoration-none'"> {{ todo.title }} </span>
+<li class="list-group-item my-2 d-flex align-items-center justify-content-between">
 
-       <button
-       type="button"
-       class="btn btn-danger mx-2"
-       [ngClass]="todo.completed ? 'text-decoration-none' : 'text-decoration-none'"
-       (click)="favTodo()"
-     >
-     <span class="glyphicon glyphicon-heart"></span>
-   </button>
+  <input class="form-check-input mx-2" type="checkbox" value="" aria-label="..." (change)="completeTodo()" />
+  <span [ngClass]="todo.completed ? 'text-decoration-line-through' : 'text-decoration-none'"> {{ todo.title }} </span>
 
-        <button
-          type="button"
-          class="btn btn-danger mx-2"
-          [ngClass]="todo.completed ? 'text-decoration-none' : 'text-decoration-none'"
-          (click)="removeTodo()"
-        >
-          Delete
-        </button>
-      </li>
+  <div>
+
+    <button type="button" class="btn btn-danger mx-2"
+    [ngClass]="todo.completed ? 'text-decoration-none' : 'text-decoration-none'" (click)="favTodo()">
+    <i [ngClass]="todo.favourite? 'bi-suit-heart-fill':'bi-suit-heart'" class="bi"></i> </button>
+    
+    <button type="button" class="btn btn-danger mx-2"
+    [ngClass]="todo.completed ? 'text-decoration-none' : 'text-decoration-none'" (click)="removeTodo()">
+    Delete
+  </button>
+</div>
+</li>

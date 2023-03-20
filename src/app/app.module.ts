@@ -9,6 +9,7 @@ import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     TodosComponent,
     TodoDetailsComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

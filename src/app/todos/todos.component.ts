@@ -18,6 +18,7 @@ export class TodosComponent {
   addTodo(){
     console.log('hello');
     this._todosService.addTodo(this.newTodoTitle);
+    this.todos = this._todosService.getTodos();
     console.log(this.newTodoTitle);
   }
 

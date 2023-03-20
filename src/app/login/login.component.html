@@ -1,1 +1,12 @@
-<p>login works!</p>
+<div class="container">
+    <div class="center-form">
+            <label for="UserName">Name</label>
+            <input [(ngModel)]="username" type="text" required id="UserName" placeholder="">
+
+            <label for="quote">Quote</label>
+            <textarea [(ngModel)]="quote" placeholder="tell us your favourite quote"></textarea>
+            <div style="width: fit-content; margin: auto;">
+                <button type="submit" (click)="addUser()">Login</button>
+            </div>
+    </div>
+</div>
