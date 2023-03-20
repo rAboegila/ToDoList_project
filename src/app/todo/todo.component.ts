@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from '../lib';
 
 @Component({
@@ -11,5 +11,22 @@ export class TodoComponent {
  constructor(){
   
  }
-  @Input()todo:Todo;
+  @Input()todo!:Todo;
+  @Output() deleteTodoEvent = new EventEmitter<Todo>();
+  @Output() completeTodoEvent = new EventEmitter<number>();
+  @Output() favouriteTodoEvent = new EventEmitter<number>();
+
+
+
+  removeTodo():void{
+    this.deleteTodoEvent.emit(this.todo); 
+  }
+
+  completeTodo():void{
+    this.completeTodoEvent.emit(this.todo.id); 
+  }  
+  favTodo():void{
+    this.favouriteTodoEvent.emit(this.todo.id); 
+  }
 }
+

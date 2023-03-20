@@ -28,4 +28,47 @@ export class TodosService {
     },
   ];
   constructor() { }
+
+  addTodo(todoTitle: string) {
+    if (todoTitle.trim().length > 0) {
+      let newId: number;
+      if (this.todos.length > 0)
+        newId = this.todos[this.todos.length - 1].id + 1;
+      else newId = 1;
+      this.todos.push({
+        title: todoTitle,
+        completed: false,
+        favourite: false,
+        deleted: false,
+        id: newId,
+      });
+    } else alert('Please Add vallid Todo');
+  }
+
+  deleteTodo(todo: Todo) {
+    todo.deleted = true;
+    // this.todos.splice(this.todos.indexOf(todo), 1);
+
+  }
+
+  toggleTodoStatus(id: number) {
+     let selectedTodoIdx:number =this.todos.findIndex(todo=> todo.id === id);
+     this.todos[selectedTodoIdx].completed =!this.todos[selectedTodoIdx].completed;
+    console.log(this.todos);
+
+  
+    }
+
+  toggleTodoFavourite(id: number) {
+    let selectedTodoIdx:number =this.todos.findIndex(todo=> todo.id === id);
+    this.todos[selectedTodoIdx].favourite =!this.todos[selectedTodoIdx].favourite;
+    console.log(this.todos);
+    
+  }
+
+  getTodos():Todo[]{
+        let todos:Todo[] = this.todos.filter((todo:Todo) => !todo.deleted);
+        console.log(this.todos);
+        return todos;
+  }
 }

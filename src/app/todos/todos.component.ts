@@ -9,11 +9,28 @@ import { TodosService } from '../todos.service';
 })
 export class TodosComponent {
   todos:Todo[] = [];
+  newTodoTitle:string='';
   
   constructor(private _todosService: TodosService){
-    this.todos = _todosService.todos;
+    this.todos = _todosService.getTodos();
   }
 
-  
+  addTodo(){
+    console.log('hello');
+    this._todosService.addTodo(this.newTodoTitle);
+    console.log(this.newTodoTitle);
+  }
 
+  deleteTodo(todo:Todo):void{
+    this._todosService.deleteTodo(todo);
+    this.todos = this._todosService.getTodos();
+  }
+
+  changeTodoStatus(id:number):void{
+    this._todosService.toggleTodoStatus(id);
+  }
+
+  changeTodoFavourite(id:number):void{
+    this._todosService.toggleTodoFavourite(id);
+  }
 }

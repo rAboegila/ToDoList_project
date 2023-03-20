@@ -20,3 +20,7 @@ body::before {
   opacity: 0.2;
   position: fixed;
 }
+
+app-root {
+  min-height: 100vh;
+}
