@@ -1,4 +1,45 @@
+<nav class=" navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+        <ul class="navbar-nav ms-auto d-flex flex-row">
 
-<div *ngIf="isLogin">
-    <p>navbar works!</p>
-</div>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="#">
+                    <i class="fs-1 bi bi-heart-fill"></i>
+                </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="#">
+                    <i class="fs-1 bi bi-archive-fill"></i>
+                </a>
+            </li>
+            <li class="nav-item me-3 me-lg-0">
+                <a class="nav-link" href="#">
+                    <i class=" fs-1 bi bi-check-square-fill"></i>
+                </a>
+            </li>
+
+            <li mdbDropdown class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" mdbDropdownToggle
+                    aria-expanded="false">
+                    <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
+                        alt="avatar image" height="60" />
+                    <!-- <i class="fs-4 bi bi-person-fill"></i> -->
+                </a>
+                <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#">Action</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
