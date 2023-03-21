@@ -6,21 +6,33 @@ import { User } from './lib';
   providedIn: 'root'
 })
 export class UsersService {
-  users: User[] = [];
+  users: User[] = [
+    {
+      id: 1,
+      userName: 'somaya',
+      quote: 'dfdgjfklds',
+      password: '12345',
+      loggedIn: false,
+    }
+  ];
   currentUser = new BehaviorSubject('')
 
   constructor() { }
 
-  addUser(name: string, quote: string) {
-    let newId: number;
-    if (this.users.length > 0)
-      newId = this.users[this.users.length - 1].id + 1;
+  addUser(formValues: { userName: string, password: string, quote: string }) {
+    const { userName, password, quote } = formValues;
+    let newId: number = 1
+    const length = this.users.length;
+    const userID = Number(((this.users.at(length - 1))?.id));
+    if (length > 0)
+      newId = userID + 1;
     else newId = 1;
     this.users.push({
-      name,
+      userName,
       quote,
       id: newId,
-      loggedIn: true
+      password,
+      loggedIn: false
     });
   }
 
@@ -36,4 +48,14 @@ export class UsersService {
   viewUser(): User {
     return JSON.parse(this.currentUser.getValue());
   }
+
+  login(userName: string, password: string): User | null {
+    let user: User | undefined = this.users.find((ele) => ele.userName === userName && ele.password === password)
+    if (user) {
+      user.loggedIn = true;
+      return user;
+    }
+    return null
+  }
+
 }

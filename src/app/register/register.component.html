@@ -1,0 +1,12 @@
+<section class="TDForm">
+    <form class="w-50 m-auto my-5 rounded shadow" [formGroup]="regForm" (ngSubmit)="registerUser(regForm)"
+        style="background-color: #f7eef0;padding: 2rem;">
+        <label for="username">Username</label>
+        <input class="form-control" formControlName="userName" name="userName" type="text" id="username">
+        <label for="password">Password</label>
+        <input class="form-control" formControlName="password" name="password" type="password" id="password">
+        <label for="quote">Quote</label>
+        <input class="form-control" formControlName="quote" name="quote" type="text" id="quote">
+        <button class="btn btn-primary mt-3" type="submit">login</button>
+    </form>
+</section>
