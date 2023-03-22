@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from '../users.service';
 
 @Component({
@@ -9,10 +10,28 @@ import { UsersService } from '../users.service';
 export class NavbarComponent {
   isLogin: boolean = false;
 
-  constructor(private _userService: UsersService) {
+  constructor(private _userService: UsersService, private _router: Router) {
     this._userService.loggedIn$.subscribe((res) => {
       this.isLogin = res
     })
   }
 
+  showFav() {
+    this._router.navigate(['/todos/favourite'])
+  }
+  showDeleted() {
+    this._router.navigate(['/todos/deleted'])
+  }
+  showCompeleted() {
+    this._router.navigate(['/todos/compeleted'])
+  }
+
+  register() {
+    this._router.navigate(['/register'])
+  }
+  logout() {
+    alert('logout completed');
+    this.isLogin = false
+    this._router.navigate(['/'])
+  }
 }
