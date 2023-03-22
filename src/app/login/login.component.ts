@@ -22,7 +22,7 @@ export class LoginComponent {
         alert('username and password don\'t match');
         return;
       }
-      this._router.navigate(['/', 'todos']);
+      this._router.navigate(['/', 'todos','all']);
     } else alert('Please enter username and password');
   }
 }

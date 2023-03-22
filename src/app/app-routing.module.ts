@@ -9,13 +9,11 @@ import { TodosComponent } from './todos/todos.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'todos', component: TodosComponent, canActivate: [AuthGuard] },
-  { path: 'todos/favourite', component: TodosComponent, canActivate: [AuthGuard] },
-  { path: 'todos/deleted', component: TodosComponent, canActivate: [AuthGuard] },
-  { path: 'todos/compeleted', component: TodosComponent, canActivate: [AuthGuard] },
+  { path: 'todos', redirectTo: 'todos/all', pathMatch: 'full'},
+  { path: 'todos/:status', component: TodosComponent, canActivate: [AuthGuard] },
   { path: 'todo/:id', component: TodoDetailsComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotfoundComponent }
 ];

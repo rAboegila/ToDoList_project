@@ -10,6 +10,13 @@ export interface User {
     readonly id: number;
     username: string,
     quote: string,
-    loggedIn:boolean,
-    password:string
+    loggedIn: boolean,
+    password: string
+}
+
+export enum TodoFilter {
+    ALL,
+    FAVOURITE,
+    COMPLETED,
+    DELETED
 }

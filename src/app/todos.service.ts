@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './lib';
+import { BehaviorSubject } from 'rxjs';
+import { Todo, TodoFilter } from './lib';
 @Injectable({
   providedIn: 'root',
 })
 export class TodosService {
+
+  //all, favourite, completed, deleted
+  status = new BehaviorSubject(TodoFilter.ALL);
+  status$ = this.status.asObservable();
+
   todos: Todo[] = [
     {
       id: 1,
@@ -27,7 +33,8 @@ export class TodosService {
       favourite: false,
     },
   ];
-  constructor() {}
+  constructor() { }
+
 
   addTodo(todoTitle: string) {
     if (todoTitle.trim().length > 0) {
@@ -47,7 +54,6 @@ export class TodosService {
 
   deleteTodo(todo: Todo) {
     todo.deleted = true;
-    // this.todos.splice(this.todos.indexOf(todo), 1);
   }
 
   toggleTodoStatus(id: number) {
@@ -69,21 +75,46 @@ export class TodosService {
 
   getTodos(): Todo[] {
     let todos: Todo[] = this.todos.filter((todo: Todo) => !todo.deleted);
-    console.log(this.todos);
+    this.status.next(TodoFilter.ALL)
     return todos;
   }
 
-  getFavouriteTodos(): Todo[] {
-    return this.todos.filter((todo) => todo.favourite);
+
+  setFilter(filter: TodoFilter){
+    this.status.next(filter)
   }
 
-  getCompleteTodos(): Todo[] {
-    return this.todos.filter((todo) => todo.completed);
+  filterTodo(filter: TodoFilter): Todo[] {
+    // if(filter===TodoFilter.ALL) return this.todos;
+    return this.todos.filter(
+      (todo) => {
+        switch (filter) {
+          case TodoFilter.COMPLETED:
+           return todo.completed && !todo.deleted
+          case TodoFilter.FAVOURITE:
+           return  todo.favourite && !todo.deleted
+          case TodoFilter.DELETED:
+          return  todo.deleted
+          case TodoFilter.ALL:
+           return !todo.deleted
+        }
+      });
   }
 
-  getdeletedTodos(): Todo[] {
-    return this.todos.filter((todo) => todo.deleted);
-  }
+  // getFavouriteTodos(): Todo[] {
+  //   this.status.next('favourite')
+  //   return this.todos.filter((todo) => todo.favourite);
+  // }
+
+  // getCompleteTodos(): Todo[] {
+  //   this.status.next('complete')
+  //   return this.todos.filter((todo) => todo.completed);
+  // }
+
+  // getdeletedTodos(): Todo[] {
+  //   this.status.next('deleted')
+  //   return this.todos.filter((todo) => todo.deleted);
+  // }
 
   deleteTodoPermanent(todo: Todo) {
     this.todos.splice(this.todos.indexOf(todo), 1);

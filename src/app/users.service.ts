@@ -52,4 +52,7 @@ export class UsersService {
     return null
   }
 
+  logout(){
+    this.loggedIn.next(false);
+  }
 }
