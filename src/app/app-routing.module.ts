@@ -8,7 +8,7 @@ import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { TodosComponent } from './todos/todos.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'login',  pathMatch:'full' },
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'todos', component: TodosComponent, canActivate: [AuthGuard] },

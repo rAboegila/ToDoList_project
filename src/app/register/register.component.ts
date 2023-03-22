@@ -12,7 +12,7 @@ export class RegisterComponent {
   regForm: FormGroup;
   constructor(private _usersService: UsersService, private _router: Router) {
     this.regForm = new FormGroup({
-      userName: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      username: new FormControl(null, [Validators.required, Validators.minLength(3)]),
       password: new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z0-9]*'), Validators.minLength(5)]),
       quote: new FormControl(null, [Validators.required]),
     })

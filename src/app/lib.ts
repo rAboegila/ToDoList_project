@@ -8,7 +8,7 @@ export interface Todo {
 
 export interface User {
     readonly id: number;
-    userName: string,
+    username: string,
     quote: string,
     loggedIn:boolean,
     password:string

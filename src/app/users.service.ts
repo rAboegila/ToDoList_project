@@ -9,18 +9,18 @@ export class UsersService {
   users: User[] = [
     {
       id: 1,
-      userName: 'somaya',
+      username: 'somaya',
       quote: 'dfdgjfklds',
       password: '12345',
       loggedIn: false,
     }
   ];
-  currentUser = new BehaviorSubject('')
-
+  loggedIn = new BehaviorSubject(false)
+  loggedIn$ = this.loggedIn.asObservable();
   constructor() { }
 
-  addUser(formValues: { userName: string, password: string, quote: string }) {
-    const { userName, password, quote } = formValues;
+  addUser(formValues: { username: string, password: string, quote: string }) {
+    const { username, password, quote } = formValues;
     let newId: number = 1
     const length = this.users.length;
     const userID = Number(((this.users.at(length - 1))?.id));
@@ -28,7 +28,7 @@ export class UsersService {
       newId = userID + 1;
     else newId = 1;
     this.users.push({
-      userName,
+      username,
       quote,
       id: newId,
       password,
@@ -36,23 +36,17 @@ export class UsersService {
     });
   }
 
-  userExists(): number {
-    if (this.users.length && this.users[this.users.length - 1].loggedIn) {
-      this.currentUser.next(JSON.stringify(this.users[this.users.length - 1]))
-      return 1
-    }
-    this.currentUser.next('');
-    return 0
+  userLoggedIn(): boolean {
+    return this.loggedIn.getValue()
   }
 
-  viewUser(): User {
-    return JSON.parse(this.currentUser.getValue());
-  }
 
   login(userName: string, password: string): User | null {
-    let user: User | undefined = this.users.find((ele) => ele.userName === userName && ele.password === password)
+    let user: User | undefined = this.users.find((ele) => ele.username === userName && ele.password === password)
     if (user) {
+      this.loggedIn.next(true)
       user.loggedIn = true;
+      console.log(user);
       return user;
     }
     return null

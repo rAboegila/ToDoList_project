@@ -10,12 +10,8 @@ export class NavbarComponent {
   isLogin: boolean = false;
 
   constructor(private _userService: UsersService) {
-    this._userService.currentUser.subscribe(() => {
-      if (this._userService.currentUser.getValue()) {
-        this.isLogin = true
-      } else {
-        this.isLogin = false
-      }
+    this._userService.loggedIn$.subscribe((res) => {
+      this.isLogin = res
     })
   }
 
