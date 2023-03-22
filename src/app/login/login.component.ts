@@ -16,13 +16,14 @@ export class LoginComponent {
 
   }
   login() {
-    if (this.username.trim().length && this.password.trim().length) {
-      const user = this._UsersService.login(this.username, this.password);
-      if (!user) {
-        alert('username and password don\'t match');
-        return;
-      }
-      this._router.navigate(['/', 'todos','all']);
-    } else alert('Please enter username and password');
+    this._UsersService.login(this.username, this.password).subscribe((res:any) => {
+      this._UsersService.AuthenticateUser();
+      this._router.navigate(['/', 'todos', 'all']);
+      localStorage.setItem('token',res.token);
+    },
+      (err) => {
+        alert('Please enter username and password');
+        console.log(err)
+      });
   }
 }

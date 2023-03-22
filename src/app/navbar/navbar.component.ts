@@ -11,11 +11,16 @@ import { UsersService } from '../users.service';
 })
 export class NavbarComponent {
   isLogin: boolean = false;
-
+  user: any;
   constructor(private _userService: UsersService, private _router: Router, private _todoService: TodosService) {
     this._userService.loggedIn$.subscribe((res) => {
       this.isLogin = res
     })
+
+    this._userService.getUser().subscribe(res => {      
+      this.user = res;
+    })
+    
   }
 
   showFav() {
@@ -38,6 +43,4 @@ export class NavbarComponent {
     this._userService.logout()
     this._router.navigate(['/'])
   }
-
-
 }

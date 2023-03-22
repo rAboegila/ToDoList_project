@@ -1,58 +1,43 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User } from './lib';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  users: User[] = [
-    {
-      id: 1,
-      username: 'somaya',
-      quote: 'dfdgjfklds',
-      password: '12345',
-      loggedIn: false,
-    }
-  ];
+
   loggedIn = new BehaviorSubject(false)
   loggedIn$ = this.loggedIn.asObservable();
-  constructor() { }
 
-  addUser(formValues: { username: string, password: string, quote: string }) {
-    const { username, password, quote } = formValues;
-    let newId: number = 1
-    const length = this.users.length;
-    const userID = Number(((this.users.at(length - 1))?.id));
-    if (length > 0)
-      newId = userID + 1;
-    else newId = 1;
-    this.users.push({
-      username,
-      quote,
-      id: newId,
-      password,
-      loggedIn: false
-    });
+  constructor(private _http: HttpClient) { }
+
+  register(formValues: { userName: string, password: string, quote: string }) {
+    return this._http.post(`${environment.baseUrl}users`, formValues)
   }
 
-  userLoggedIn(): boolean {
+  login(userName: string, password: string) {
+    return this._http.post(`${environment.baseUrl}users/signin`, { userName, password })
+  }
+
+  isLoggedIn(): boolean {
     return this.loggedIn.getValue()
   }
 
-
-  login(userName: string, password: string): User | null {
-    let user: User | undefined = this.users.find((ele) => ele.username === userName && ele.password === password)
-    if (user) {
-      this.loggedIn.next(true)
-      user.loggedIn = true;
-      console.log(user);
-      return user;
-    }
-    return null
+  AuthenticateUser() {
+    this.loggedIn.next(true);
   }
 
-  logout(){
+  logout() {
     this.loggedIn.next(false);
+  }
+
+  getUser() {
+    let token: any = localStorage.getItem('token');
+    const httpOptions = {
+      headers: new HttpHeaders().set("Authorization", token)
+    };
+    return this._http.get(`${environment.baseUrl}users`, httpOptions)
   }
 }

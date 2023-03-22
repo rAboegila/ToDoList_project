@@ -15,8 +15,8 @@ export interface User {
 }
 
 export enum TodoFilter {
-    ALL,
-    FAVOURITE,
-    COMPLETED,
-    DELETED
+    ALL = 'all',
+    FAVOURITE = 'favourite ',
+    COMPLETED = 'completed',
+    DELETED = 'deleted'
 }
