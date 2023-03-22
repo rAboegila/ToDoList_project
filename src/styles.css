@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
- body {
+body {
   background: linear-gradient(
     180deg,
     rgba(244, 249, 255, 1) 0%,
@@ -22,10 +22,5 @@ body::after {
   position: absolute;
   top: 0;
   left: 0;
-} 
-
-app-root {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
+  z-index: -1;
 }
