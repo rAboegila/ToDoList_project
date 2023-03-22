@@ -7,7 +7,8 @@ import { Todo } from '../lib';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent {
-
+  
+ openDeleteModal:boolean = false;
  constructor(){
   
  }
@@ -15,10 +16,15 @@ export class TodoComponent {
   @Output() deleteTodoEvent = new EventEmitter<Todo>();
   @Output() completeTodoEvent = new EventEmitter<number>();
   @Output() favouriteTodoEvent = new EventEmitter<number>();
+  @Output() undoDeleteEvent = new EventEmitter<Todo>();
 
 
 
-  removeTodo():void{
+  confirmRemoveTodo():void {
+    this.openDeleteModal = true;
+  }
+
+  removeTodo():void{    
     this.deleteTodoEvent.emit(this.todo); 
   }
 
@@ -27,6 +33,10 @@ export class TodoComponent {
   }  
   favTodo():void{
     this.favouriteTodoEvent.emit(this.todo.id); 
+  }
+
+  undo():void{
+    this.undoDeleteEvent.emit(this.todo);
   }
 }
 
