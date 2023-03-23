@@ -1,4 +1,4 @@
-<li class="list-group-item my-2 d-flex align-items-center justify-content-between" *ngIf="!todo.status.deleted" >
+<li class="list-group-item my-2 d-flex align-items-center justify-content-between" *ngIf="(todo.status.deleted ? (todosCategory === 'deleted'):true)" >
 
   <input class="form-check-input mx-2" type="checkbox" value="" aria-label="..." (change)="completeTodo()"
     *ngIf="!todo.status.deleted" />

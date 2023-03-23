@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Todo } from '../lib';
+import { Todo, TodoFilter } from '../lib';
 
 @Component({
   selector: 'app-todo',
@@ -9,6 +9,8 @@ import { Todo } from '../lib';
 export class TodoComponent {
   
  openDeleteModal:boolean = false;
+ @Input() todosCategory:string = TodoFilter.ALL;
+
  constructor(){
   
  }

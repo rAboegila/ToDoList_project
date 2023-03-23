@@ -60,6 +60,8 @@
       <app-todo
         *ngFor="let todo of todos"
         [todo]="todo"
+
+        [todosCategory] = "todosCategory"
         (deleteTodoEvent)="editTodoStatus(todo, 'deleted')"
         (completeTodoEvent)="editTodoStatus(todo, 'completed')"
         (favouriteTodoEvent)="editTodoStatus(todo, 'favourite')"
