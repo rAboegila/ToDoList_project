@@ -6,6 +6,7 @@ export interface Todo {
     favourite: boolean;
     deleted: boolean;
   };
+  priority: string;
 }
 export interface User {
   readonly id: number;

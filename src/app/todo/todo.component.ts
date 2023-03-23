@@ -19,10 +19,13 @@ export class TodoComponent {
   @Output() undoDeleteEvent = new EventEmitter<Todo>();
 
   confirmRemoveTodo():void {
+    // access right todo
     this.openDeleteModal = true;
+    this.removeTodo()
   }
 
-  removeTodo():void{    
+  removeTodo():void{  
+    // access wrong todo  
     this.deleteTodoEvent.emit(this.todo._id); 
   }
 

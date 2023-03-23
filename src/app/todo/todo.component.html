@@ -1,24 +1,23 @@
-<li class="list-group-item my-2 d-flex align-items-center justify-content-between">
+<li class="list-group-item my-2 d-flex align-items-center justify-content-between" *ngIf="!todo.status.deleted" >
 
   <input class="form-check-input mx-2" type="checkbox" value="" aria-label="..." (change)="completeTodo()"
     *ngIf="!todo.status.deleted" />
   <span [ngClass]="todo.status.completed ? 'text-decoration-line-through' : 'text-decoration-none'">{{ todo.title }} </span>
 
   <div>
-
     <button type="button" class="btn btn-danger mx-2" [disabled]="todo.status.deleted"
       [ngClass]="todo.status.completed ? 'text-decoration-none' : 'text-decoration-none'" (click)="favTodo()">
       <i [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="bi"></i> </button>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    <!-- <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal" -->
+    <button type="button" class="btn btn-danger mx-2" 
       *ngIf="!todo.status.deleted" [ngClass]="todo.status.completed ? 'text-decoration-none' : 'text-decoration-none'"
       (click)="confirmRemoveTodo()">
       Delete
     </button>
   </div>
 </li>
-
 
 <!-- Confirm delete Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -39,6 +38,8 @@
     </div>
   </div>
 </div>
+
+
 
 <!-- Deleted successfuly -->
 <div class="modal fade" id="deletedModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
