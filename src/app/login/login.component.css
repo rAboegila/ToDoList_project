@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap');
+
+label,
+button {
+    font-size: 1.2rem;
+    font-family: 'Abhaya Libre', serif;
+}
+
+label {
+    margin-top: 1rem;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.not-valid {
+    border: 1px solid red;
+}
+
+.valid {
+    border: 1px solid green;
+}

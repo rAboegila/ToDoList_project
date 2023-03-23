@@ -15,30 +15,16 @@ export class TodosService {
   constructor(private _http: HttpClient) { }
 
   addTodo(todoTitle: string) {
-    return this._http.post<any>(`${environment.baseUrl}todos`, { title: todoTitle }, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `${localStorage.getItem('token')}`
-      })
-    })
+    return this._http.post<any>(`${environment.baseUrl}todos`, { title: todoTitle }
+    )
   }
 
   getTodos() {
-    return this._http.get<any>(`${environment.baseUrl}todos`, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `${localStorage.getItem('token')}`
-      })
-    })
+    return this._http.get<any>(`${environment.baseUrl}todos`)
   }
 
   updateTodos(todo: Todo) {
-    return this._http.patch<any>(`${environment.baseUrl}todos/${todo._id}`, { status: todo.status }, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `${localStorage.getItem('token')}`
-      })
-    })
+    return this._http.patch<any>(`${environment.baseUrl}todos/${todo._id}`, { status: todo.status })
   }
 
   toggleTodoStatus(selectedTodo: Todo, statusType: TodoStatus) {

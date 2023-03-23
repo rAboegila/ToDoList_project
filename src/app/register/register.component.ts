@@ -9,6 +9,8 @@ import { UsersService } from '../users.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  errors: string = '';
+
   regForm: FormGroup;
   constructor(private _usersService: UsersService, private _router: Router) {
     this.regForm = new FormGroup({
@@ -19,14 +21,14 @@ export class RegisterComponent {
 
   }
   registerUser(regForm: FormGroup) {
-    console.log(regForm.value);
-
     this._usersService.register(regForm.value).subscribe(
       (res) => {
         this._router.navigate(['/login'])
       },
       (err) => {
-        console.log(err.error)
+        if (err.error.message) {
+          this.errors = err.error.message
+        }        
       }
     );
   }

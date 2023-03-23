@@ -9,21 +9,21 @@ import { UsersService } from '../users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
+  userName: string = '';
   password: string = '';
+  errors: string = '';
 
   constructor(private _UsersService: UsersService, private _router: Router) {
 
   }
-  login() {
-    this._UsersService.login(this.username, this.password).subscribe((res:any) => {
+  login(form: NgForm) {
+    this._UsersService.login(form.value).subscribe((res: any) => {
       this._UsersService.AuthenticateUser();
       this._router.navigate(['/', 'todos', 'all']);
-      localStorage.setItem('token',res.token);
+      localStorage.setItem('token', res.token);
     },
       (err) => {
-        alert('Please enter username and password');
-        console.log(err)
+        this.errors= err.error.message
       });
   }
 }

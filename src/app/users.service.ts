@@ -17,8 +17,8 @@ export class UsersService {
     return this._http.post(`${environment.baseUrl}users`, formValues)
   }
 
-  login(userName: string, password: string) {
-    return this._http.post(`${environment.baseUrl}users/signin`, { userName, password })
+  login(formValues: { userName: string, password: string }) {
+    return this._http.post(`${environment.baseUrl}users/signin`, formValues)
   }
 
   isLoggedIn(): boolean {
@@ -31,13 +31,10 @@ export class UsersService {
 
   logout() {
     this.loggedIn.next(false);
+    localStorage.removeItem('token')
   }
 
   getUser() {
-    let token: any = localStorage.getItem('token');    
-    const httpOptions = {
-      headers: new HttpHeaders().set("Authorization", token)
-    };
-    return this._http.get(`${environment.baseUrl}users`, httpOptions)
+    return this._http.get(`${environment.baseUrl}users`)
   }
 }
