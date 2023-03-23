@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() { }
 
   checkIfLogin(url: string): boolean {
-    return !url.includes('login') || !url.includes('register');
+    return !(url.includes('login') && url.includes('register'));
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
