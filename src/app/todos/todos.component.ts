@@ -12,12 +12,14 @@ import { TodosService } from '../todos.service';
 export class TodosComponent {
   todos: Todo[] = [];
   newTodoTitle: string = '';
+  todosCategory!:TodoFilter;
   @ViewChild('taskForm') myTodo!:NgForm ;
 
   todoStatus!: TodoStatus;
 
   constructor(private _todosService: TodosService, private _activatedRoute: ActivatedRoute) {
     this._todosService.status$.subscribe((res) => {
+      this.todosCategory = res;
       this.getTodos(res)
     })
   }
