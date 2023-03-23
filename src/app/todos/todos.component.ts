@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Todo, TodoFilter, TodoStatus } from '../lib';
 import { TodosService } from '../todos.service';
@@ -11,6 +12,8 @@ import { TodosService } from '../todos.service';
 export class TodosComponent {
   todos: Todo[] = [];
   newTodoTitle: string = '';
+  @ViewChild('taskForm') myTodo!:NgForm ;
+
   todoStatus!: TodoStatus;
 
   constructor(private _todosService: TodosService, private _activatedRoute: ActivatedRoute) {
@@ -29,21 +32,19 @@ export class TodosComponent {
   }
 
   addTodo() {
-    this._todosService.addTodo(this.newTodoTitle).subscribe({
+    this._todosService.addTodo(this.myTodo.value.title).subscribe({
       next: (res) => {
         const { title, status, _id } = res.data
-        this.todos.push({ _id, title, status })
+        this.todos.push({ _id, title, status, priority:this.myTodo.value.priority })
       },
       error: (err) => {
-        console.log(err);
+        alert(err.error.message);
       }
     });
 
   }
 
   editTodoStatus(selectedTodo: Todo, status: string): void {
-    // console.log(selectedTodo);
-
     switch (status) {
       case 'completed':
         this.todoStatus = TodoStatus.COMPLETED
@@ -55,20 +56,26 @@ export class TodosComponent {
 
       case 'deleted':
         this.todoStatus = TodoStatus.DELETED;
-        this.getTodos(this._activatedRoute.snapshot.params['status'])
         break;
     }
 
+    
+    // this.getTodos(this._activatedRoute.snapshot.params['status'])
     this._todosService.toggleTodoStatus(selectedTodo, this.todoStatus);
     this._todosService.updateTodos(selectedTodo).subscribe({
       next(value) {
-        console.log(value);
-
+        console.log(value);        
       },
       error(err) {
-        console.log(err);
-
+        alert(err.error.message);
       },
     })
   }
+
+  
+  submitMyTodo(form:NgForm) {
+    this.addTodo();
+    form.reset()
+  }
+
 }
