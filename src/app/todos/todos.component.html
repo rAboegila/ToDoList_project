@@ -1,17 +1,15 @@
 <section class="m-auto mt-5 w-50 bd-secondary" style="background-color: #f7eef0;">
   <div class="d-flex align-items-center justify-content-between">
-    <input
-      type="text"
-      class="form-control me-1 my-2"
-      placeholder="Begin new Achievment"
-      autocomplete="off"
-      [(ngModel)]="newTodoTitle"
-    />
+    <input type="text" class="form-control me-1 my-2" placeholder="Begin new Achievment" autocomplete="off"
+      [(ngModel)]="newTodoTitle" />
     <button type="button" class="btn btn-primary" (click)="addTodo()">Add</button>
   </div>
   <div>
     <ul>
-      <app-todo *ngFor="let todo of todos" [todo]="todo" (deleteTodoEvent)="deleteTodo(todo)" (completeTodoEvent)="editTodoStatus(todo, 'completed')" (favouriteTodoEvent)="editTodoStatus(todo, 'favourite')"></app-todo>
+      <app-todo *ngFor="let todo of todos" [todo]="todo" 
+        (deleteTodoEvent)="editTodoStatus(todo, 'deleted')"
+        (completeTodoEvent)="editTodoStatus(todo, 'completed')"
+        (favouriteTodoEvent)="editTodoStatus(todo, 'favourite')"></app-todo>
     </ul>
   </div>
 </section>

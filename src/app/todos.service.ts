@@ -11,51 +11,46 @@ export class TodosService {
 
   status = new BehaviorSubject(TodoFilter.ALL);
   status$ = this.status.asObservable();
-   constructor(private _http: HttpClient) { }
 
+  constructor(private _http: HttpClient) { }
 
-  addTodo(todoTitle: string ) {
-   return this._http.post<any>(`${environment.baseUrl}todos`,{title: todoTitle},{
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      Authorization: `${localStorage.getItem('token')}`
-    })
-  })}
-
-
-  getTodos(){
-    return this._http.get<any>(`${environment.baseUrl}todos`,{
+  addTodo(todoTitle: string) {
+    return this._http.post<any>(`${environment.baseUrl}todos`, { title: todoTitle }, {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: `${localStorage.getItem('token')}`
-      })
-    })
-  }
-  
-  updateTodos(todo:Todo){
-    console.log(todo);
-    
-    return this._http.patch<any>(`${environment.baseUrl}todos/${todo._id}`,{status: todo.status},{
-            headers: new HttpHeaders({
-        'Content-Type':  'application/json',
+        'Content-Type': 'application/json',
         Authorization: `${localStorage.getItem('token')}`
       })
     })
   }
 
-  deleteTodo(todo: Todo) {
-    todo.status.deleted = true;
+  getTodos() {
+    return this._http.get<any>(`${environment.baseUrl}todos`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `${localStorage.getItem('token')}`
+      })
+    })
   }
 
-  toggleTodoStatus(selectedTodo:Todo, statusType:TodoStatus) {
-    selectedTodo.status[statusType] = ! selectedTodo.status[statusType];
+  updateTodos(todo: Todo) {
+    return this._http.patch<any>(`${environment.baseUrl}todos/${todo._id}`, { status: todo.status }, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `${localStorage.getItem('token')}`
+      })
+    })
+  }
+
+  toggleTodoStatus(selectedTodo: Todo, statusType: TodoStatus) {
+    console.log("toggle",selectedTodo ,statusType);
+    selectedTodo.status[statusType] = !selectedTodo.status[statusType];
   }
 
   setFilter(filter: TodoFilter) {
     this.status.next(filter)
   }
 
-  filterTodo( todos:Todo[],filter: TodoFilter): Todo[] {
+  filterTodo(todos: Todo[], filter: TodoFilter): Todo[] {
     return todos.filter(
       (todo) => {
         switch (filter) {
@@ -65,7 +60,7 @@ export class TodosService {
             return todo.status.favourite && !todo.status.deleted
           case TodoFilter.DELETED:
             return todo.status.deleted
-            case TodoFilter.ALL:
+          case TodoFilter.ALL:
             return !todo.status.deleted
         }
       });

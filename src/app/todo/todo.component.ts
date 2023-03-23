@@ -13,7 +13,7 @@ export class TodoComponent {
   
  }
   @Input()todo!:Todo;
-  @Output() deleteTodoEvent = new EventEmitter<Todo>();
+  @Output() deleteTodoEvent = new EventEmitter<number>();
   @Output() completeTodoEvent = new EventEmitter<number>();
   @Output() favouriteTodoEvent = new EventEmitter<number>();
   @Output() undoDeleteEvent = new EventEmitter<Todo>();
@@ -23,7 +23,7 @@ export class TodoComponent {
   }
 
   removeTodo():void{    
-    this.deleteTodoEvent.emit(this.todo); 
+    this.deleteTodoEvent.emit(this.todo._id); 
   }
 
   completeTodo():void{

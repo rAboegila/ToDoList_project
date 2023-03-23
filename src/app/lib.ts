@@ -23,6 +23,7 @@ export enum TodoFilter {
 }
 
 export enum TodoStatus {
+ 
   FAVOURITE = 'favourite',
   COMPLETED = 'completed',
   DELETED = 'deleted',
