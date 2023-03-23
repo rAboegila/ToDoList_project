@@ -30,7 +30,9 @@ export class TodosComponent {
         console.log(res);
         
         const {title, status, id} = res.data
-        this.todos.push({id, title, ...status})        
+        this.todos.push({id, title, ...status})  
+        console.log(this.todos);
+              
            },
       error: (err) => {
         console.log(err);
@@ -58,6 +60,8 @@ export class TodosComponent {
         this._todosService.updateTodos(selectedTodo).subscribe({
           next(value) {
             console.log(value);
+            console.log(selectedTodo);
+            
           },
           error(err) {
             console.log(err);
