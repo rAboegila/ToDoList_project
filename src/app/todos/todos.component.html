@@ -11,7 +11,7 @@
   </div>
   <div>
     <ul>
-    <app-todo *ngFor="let todo of todos" [todo]="todo" (deleteTodoEvent)="deleteTodo(todo)" (completeTodoEvent)="changeTodoStatus(todo.id)" (favouriteTodoEvent)="changeTodoFavourite(todo.id)"></app-todo>
-</ul>
+      <app-todo *ngFor="let todo of todos" [todo]="todo" (deleteTodoEvent)="deleteTodo(todo)" (completeTodoEvent)="editTodoStatus(todo, 'completed')" (favouriteTodoEvent)="editTodoStatus(todo, 'favourite')"></app-todo>
+    </ul>
   </div>
 </section>

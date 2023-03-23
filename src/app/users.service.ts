@@ -34,7 +34,7 @@ export class UsersService {
   }
 
   getUser() {
-    let token: any = localStorage.getItem('token');
+    let token: any = localStorage.getItem('token');    
     const httpOptions = {
       headers: new HttpHeaders().set("Authorization", token)
     };

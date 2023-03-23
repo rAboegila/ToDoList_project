@@ -18,8 +18,6 @@ export class TodoComponent {
   @Output() favouriteTodoEvent = new EventEmitter<number>();
   @Output() undoDeleteEvent = new EventEmitter<Todo>();
 
-
-
   confirmRemoveTodo():void {
     this.openDeleteModal = true;
   }
