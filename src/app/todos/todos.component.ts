@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnChanges } from '@angular/core';
 import { Todo, TodoStatus } from '../lib';
 import { TodosService } from '../todos.service';
 
@@ -7,7 +7,7 @@ import { TodosService } from '../todos.service';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
-export class TodosComponent {
+export class TodosComponent  implements OnChanges{
   todos: Todo[] = [];
   newTodoTitle: string = '';
   todoStatus!: TodoStatus  ;
@@ -18,24 +18,26 @@ export class TodosComponent {
       this._todosService.getTodos().subscribe({
         next:(result) => {
           this.todos = result.data;
+          this.todos = _todosService.filterTodo(this.todos,res);
       }} );
-      this.todos = _todosService.filterTodo(res);
     })
+  }
+
+  ngOnChanges(): void {
+    console.log('fired');
   }
 
   addTodo() {    
     this._todosService.addTodo(this.newTodoTitle).subscribe({
       next: (res) => 
-      { 
-        console.log(res);
-        
-        const {title, status, id} = res.data
-        this.todos.push({id, title, ...status})  
+      { console.log(res);
+        const {title, status, _id} = res.data
         console.log(this.todos);
-              
+        this.todos.push({_id, title, status}) 
+        console.log(this.todos);                      
            },
-      error: (err) => {
-        console.log(err);
+      error: (res) => {
+        console.log(res);
       }
   });
 
@@ -52,11 +54,16 @@ export class TodosComponent {
               this.todoStatus = TodoStatus.COMPLETED
             break;
 
-            case 'favourite':
+          case 'favourite':
               this.todoStatus = TodoStatus.FAVOURITE
             break;
-        }        
-        this._todosService.toggleTodoStatus(selectedTodo, this.todoStatus);
+
+          case 'deleted':
+              this.todoStatus = TodoStatus.DELETED
+            break;
+        }   
+
+        this._todosService.toggleTodoStatus(selectedTodo, this.todoStatus);        
         this._todosService.updateTodos(selectedTodo).subscribe({
           next(value) {
             console.log(value);
@@ -69,5 +76,8 @@ export class TodosComponent {
           },
         })
   }
+
+
+  
 
 }

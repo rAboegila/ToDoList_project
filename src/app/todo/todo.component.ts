@@ -27,10 +27,10 @@ export class TodoComponent {
   }
 
   completeTodo():void{
-    this.completeTodoEvent.emit(this.todo.id); 
+    this.completeTodoEvent.emit(this.todo._id); 
   }  
   favTodo():void{
-    this.favouriteTodoEvent.emit(this.todo.id); 
+    this.favouriteTodoEvent.emit(this.todo._id); 
   }
 
   undo():void{

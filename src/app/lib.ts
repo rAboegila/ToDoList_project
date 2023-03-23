@@ -1,5 +1,5 @@
 export interface Todo {
-  readonly id: number;
+  readonly _id: number;
   title: string;
   status: {
     completed: boolean;
@@ -25,4 +25,6 @@ export enum TodoFilter {
 export enum TodoStatus {
   FAVOURITE = 'favourite',
   COMPLETED = 'completed',
+  DELETED = 'deleted',
+
 }

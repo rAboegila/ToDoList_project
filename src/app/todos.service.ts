@@ -11,9 +11,6 @@ export class TodosService {
 
   status = new BehaviorSubject(TodoFilter.ALL);
   status$ = this.status.asObservable();
-
-  todos: Todo[] = [];
-
    constructor(private _http: HttpClient) { }
 
 
@@ -36,7 +33,9 @@ export class TodosService {
   }
   
   updateTodos(todo:Todo){
-    return this._http.patch<any>(`${environment.baseUrl}todos/${todo.id}`,{status: todo.status},{
+    console.log(todo);
+    
+    return this._http.patch<any>(`${environment.baseUrl}todos/${todo._id}`,{status: todo.status},{
             headers: new HttpHeaders({
         'Content-Type':  'application/json',
         Authorization: `${localStorage.getItem('token')}`
@@ -56,8 +55,8 @@ export class TodosService {
     this.status.next(filter)
   }
 
-  filterTodo(filter: TodoFilter): Todo[] {
-    return this.todos.filter(
+  filterTodo( todos:Todo[],filter: TodoFilter): Todo[] {
+    return todos.filter(
       (todo) => {
         switch (filter) {
           case TodoFilter.COMPLETED:
