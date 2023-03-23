@@ -6,18 +6,20 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() { }
+  constructor(private _cookieService: CookieService) { }
 
   checkIfLogin(url: string): boolean {
-    return !(url.includes('login') && url.includes('register'));
+    return (url.includes('signin') || url.includes('register'));
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let token: string | null = localStorage.getItem('token');
-    if (token && this.checkIfLogin(request.url)) {
+    let token: string | null = this._cookieService.get('token');
+
+    if (token && !this.checkIfLogin(request.url)) {
       request = request.clone({ headers: request.headers.append('Authorization', token) });
     }
     return next.handle(request);

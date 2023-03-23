@@ -12,16 +12,19 @@ import { UsersService } from '../users.service';
 export class NavbarComponent {
   isLogin: boolean = false;
   user: any;
+
   constructor(private _userService: UsersService, private _router: Router, private _todoService: TodosService) {
     this._userService.loggedIn$.subscribe((res) => {
-      this.isLogin = res
+      this.isLogin = res;
+      if (this.isLogin) {
+        this._userService.getUser().subscribe(response => {
+          this.user = response;
+          console.log(response);
+        })
+      }
     })
-
-    this._userService.getUser().subscribe(res => {      
-      this.user = res;
-    })
-    
   }
+
 
   showFav() {
     this._todoService.setFilter(TodoFilter.FAVOURITE)
@@ -41,6 +44,5 @@ export class NavbarComponent {
   }
   logout() {
     this._userService.logout()
-    this._router.navigate(['/'])
   }
 }

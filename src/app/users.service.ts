@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
@@ -11,10 +13,10 @@ export class UsersService {
   loggedIn = new BehaviorSubject(false)
   loggedIn$ = this.loggedIn.asObservable();
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient,private _cookieService:CookieService , private _router:Router) { }
 
   register(formValues: { userName: string, password: string, quote: string }) {
-    return this._http.post(`${environment.baseUrl}users`, formValues)
+    return this._http.post(`${environment.baseUrl}users/register`, formValues)
   }
 
   login(formValues: { userName: string, password: string }) {
@@ -30,8 +32,9 @@ export class UsersService {
   }
 
   logout() {
+    this._cookieService.delete('token');  
     this.loggedIn.next(false);
-    localStorage.removeItem('token')
+    this._router.navigate(['/'])
   }
 
   getUser() {

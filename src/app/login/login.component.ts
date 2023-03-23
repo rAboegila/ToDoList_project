@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { UsersService } from '../users.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,16 +13,16 @@ export class LoginComponent {
   password: string = '';
   errors: string = '';
 
-  constructor(private _UsersService: UsersService, private _router: Router) {
+  constructor(private _UsersService: UsersService, private _router: Router, private _cookieService: CookieService) {
 
   }
   login(form: NgForm) {
     this._UsersService.login(form.value).subscribe((res: any) => {
+      this._cookieService.set('token', res.token);
       this._UsersService.AuthenticateUser();
       this._router.navigate(['/', 'todos', 'all']);
-      localStorage.setItem('token', res.token);
     },
-      (err) => {
+      (err) => {        
         this.errors= err.error.message
       });
   }
