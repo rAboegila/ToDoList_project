@@ -1,1 +1,59 @@
-<p>todo-details works!</p>
+<div
+  class="d-flex align-items-center justify-content-center w-75 m-auto"
+  id="details"
+>
+  <!-- <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate' > </ejs-calendar > -->
+  <div class="text-center">
+    <h1>{{ todo.title }}</h1>
+    <br />
+    <p>
+      {{ todo.description }}
+    </p>
+    <div class="d-flex align-items-center justify-content-between">
+      <input class="form-control" type="text" name="step" [(ngModel)]="step" />
+      <button class="btn btn-danger" type="button" (click)="modifySteps()">
+        Add
+      </button>
+    </div>
+    <br />
+    <ul>
+      <li class="list-group-item" *ngFor="let step of todo.steps">
+        <input
+          type="checkbox"
+          (click)="toggleStepState(step)"
+          [ngClass]=" step.isChecked ? 'text-decoration-line-through' : 'text-decoration-none'"
+        />{{ step.text }}
+      </li>
+    </ul>
+    <h3>
+      priority: {{ todo.priority }}
+      <i
+        class="bi bi-square-fill"
+        [ngClass]="
+          todo.priority === 'High'
+            ? ' bi bi-square-fill  high'
+            : todo.priority === 'Moderate'
+            ? ' bi bi-square-fill  moderate'
+            : ' bi bi-square-fill  low'
+        "
+      ></i>
+    </h3>
+
+    <ul></ul>
+  </div>
+
+  <div
+    class="container w-50"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutWrap
+    fxLayoutGap="0.5%"
+    fxLayoutAlign="center"
+  >
+    <mat-calendar
+      [selected]="todo.deadline"
+      (selectedChange)="onSelect($event)"
+       [minDate]="today"
+    ></mat-calendar>
+  </div>
+</div>

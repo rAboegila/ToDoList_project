@@ -14,6 +14,14 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { QouteComponent } from './qoute/qoute.component';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
+import { MatNativeDateModule} from '@angular/material/core';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +40,14 @@ import { QouteComponent } from './qoute/qoute.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CalendarModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [
     AuthInterceptor,

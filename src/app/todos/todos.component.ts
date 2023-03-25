@@ -14,6 +14,9 @@ export class TodosComponent {
   filteredTodos: Todo[] = [];
   newTodoTitle: string = '';
   todosCategory!: TodoFilter;
+  minDate = Date.now();
+  maxDate = new Date(2024,0,1);
+  startDate = Date.now();
   @ViewChild('taskForm') myTodo!: NgForm;
 
   todoStatus!: TodoStatus;
@@ -43,10 +46,11 @@ export class TodosComponent {
     this._todosService.counters.completedCount = this.todos.filter(todo => todo.status.completed && !todo.status.deleted).length
   }
   addTodo() {
-    this._todosService.addTodo(this.myTodo.value.title).subscribe({
+    console.log({...this.myTodo.value});
+    this._todosService.addTodo({ ...this.myTodo.value }).subscribe({
       next: (res) => {
         const { title, status, _id } = res.data
-        this.filteredTodos.push({ _id, title, status, priority: this.myTodo.value.priority })
+        this.todos.push({ _id, title, status, priority:this.myTodo.value.priority, deadline: this.myTodo.value.deadline })
       },
       error: (err) => {
         alert(err.error.message);
@@ -88,6 +92,8 @@ export class TodosComponent {
 
 
   submitMyTodo(form: NgForm) {
+    console.log(form.value);
+    
     this.addTodo();
     form.reset()
   }

@@ -1,0 +1,28 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+#details{
+   background-color: #f7eef0;
+   padding: 20px;
+   margin-top: 200px;
+}
+
+/* CSS alternative */
+::ng-deep .mat-calendar-body-active , .mat-calendar-body-selected{
+    color: firebrick;
+}
+
+.high
+{
+    color: red;
+}
+
+.moderate
+{
+    color: rgb(232, 194, 45);
+}
+
+.low
+{
+    color: rgb(154, 232, 45);
+}
+

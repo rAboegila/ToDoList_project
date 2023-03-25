@@ -1,3 +1,8 @@
+export type todoStep = {
+   text:string;
+   isChecked:boolean;
+}
+
 export interface Todo {
   readonly _id: number;
   title: string;
@@ -6,7 +11,10 @@ export interface Todo {
     favourite: boolean;
     deleted: boolean;
   };
-  priority: string;
+  priority?: string;
+  deadline: Date;
+  steps?:todoStep[];
+  description?: string;
 }
 export interface User {
   readonly id?: number;

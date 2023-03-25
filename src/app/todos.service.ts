@@ -20,8 +20,9 @@ export class TodosService {
 
   constructor(private _http: HttpClient) { }
 
-  addTodo(todoTitle: string) {
-    return this._http.post<any>(`${environment.baseUrl}todos`, { title: todoTitle }
+  addTodo(newTodo:any) {
+    console.log(newTodo);
+    return this._http.post<any>(`${environment.baseUrl}todos`, newTodo
     )
   }
 
@@ -29,8 +30,16 @@ export class TodosService {
     return this._http.get<any>(`${environment.baseUrl}todos`)
   }
 
+  getTodoById(id:number){
+    return this._http.get<any>(`${environment.baseUrl}todos/${id}`)
+  }
+
   updateTodos(todo: Todo) {
     return this._http.patch<any>(`${environment.baseUrl}todos/${todo._id}`, { status: todo.status })
+  }
+
+  UpdateTodoDate(id:number, date:Date){
+    return this._http.patch<any>(`${environment.baseUrl}todos/${id}`, { _id:id, deadline: date })
   }
 
   toggleTodoStatus(selectedTodo: Todo, statusType: TodoStatus) {

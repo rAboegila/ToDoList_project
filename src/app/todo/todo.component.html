@@ -2,9 +2,14 @@
   class=" todo list-group-item py-2 my-2 ml-3 d-flex align-items-center justify-content-between"
   *ngIf="(todo.status.deleted ? (todosCategory === 'deleted'):true)">
 
-  <span style="cursor: pointer;" (click)="completeTodo()">{{
-    todo.title }}
+  <input class="form-check-input mx-2" type="checkbox" value="" aria-label="..." (change)="completeTodo()"
+    *ngIf="!todo.status.deleted" />
+  
+    <span style="cursor: pointer;" [ngClass]="todo.status.completed ? 'text-decoration-line-through' : 'text-decoration-none'">
+      <a (click)="goToDetails()">
+    {{ todo.title }}  </a> 
   </span>
+ 
 
   <div>
     <button id='deleteIcon' type="button" class="btn  mx-1" *ngIf="!todo.status.deleted"
