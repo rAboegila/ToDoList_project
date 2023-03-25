@@ -37,6 +37,10 @@
             : ' bi bi-square-fill  low'
         "
       ></i>
+      <i
+        [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="text-danger fs-5 bi"></i>
+        <i
+        [ngClass]="todo.status.completed ? 'bi bi-check text-success':'bi bi-x text-danger'" class="text-success fs-5 bi" style="font-size: large;"></i>
     </h3>
 
     <ul></ul>
