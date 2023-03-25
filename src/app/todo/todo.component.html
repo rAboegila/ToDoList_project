@@ -1,21 +1,23 @@
-<li class="list-group-item my-2 d-flex align-items-center justify-content-between" *ngIf="(todo.status.deleted ? (todosCategory === 'deleted'):true)" >
+<li [ngClass]="this.todo.status.completed ? 'completed' : 'normal'"
+  class=" todo list-group-item py-2 my-2 ml-3 d-flex align-items-center justify-content-between"
+  *ngIf="(todo.status.deleted ? (todosCategory === 'deleted'):true)">
 
-  <input class="form-check-input mx-2" type="checkbox" value="" aria-label="..." (change)="completeTodo()"
-    *ngIf="!todo.status.deleted" />
-  <span [ngClass]="todo.status.completed ? 'text-decoration-line-through' : 'text-decoration-none'">{{ todo.title }} </span>
+  <span style="cursor: pointer;" (click)="completeTodo()">{{
+    todo.title }}
+  </span>
 
   <div>
-    <button type="button" class="btn btn-danger mx-2" [disabled]="todo.status.deleted"
-      [ngClass]="todo.status.completed ? 'text-decoration-none' : 'text-decoration-none'" (click)="favTodo()">
-      <i [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="bi"></i> </button>
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-danger mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal" -->
-    <button type="button" class="btn btn-danger mx-2" 
-      *ngIf="!todo.status.deleted" [ngClass]="todo.status.completed ? 'text-decoration-none' : 'text-decoration-none'"
-      (click)="confirmRemoveTodo()">
-      Delete
+    <button id='deleteIcon' type="button" class="btn  mx-1" *ngIf="!todo.status.deleted"
+      [ngClass]="todo.status.completed ? 'text-decoration-none' : 'text-decoration-none'"
+      (click)="confirmRemoveTodo()"><i class="fs-5 text-danger bi bi-x-circle-fill"></i>
     </button>
+
+    <button id='favIcon' type="button" class="btn  mx-1" [disabled]="todo.status.deleted"
+      [ngClass]="todo.status.completed ? 'text-decoration-none' : 'text-decoration-none'" (click)="favTodo()"> <i
+        [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="text-danger fs-5 bi"></i>
+    </button>
+
+
   </div>
 </li>
 

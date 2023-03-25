@@ -12,6 +12,12 @@ export class TodosService {
   status = new BehaviorSubject(TodoFilter.ALL);
   status$ = this.status.asObservable();
 
+  counters = {
+    'deletedCount': 0,
+    'favCount': 0,
+    'completedCount': 0
+  }
+
   constructor(private _http: HttpClient) { }
 
   addTodo(todoTitle: string) {
@@ -28,7 +34,7 @@ export class TodosService {
   }
 
   toggleTodoStatus(selectedTodo: Todo, statusType: TodoStatus) {
-    console.log("toggle",selectedTodo ,statusType);
+    console.log("toggle", selectedTodo, statusType);
     selectedTodo.status[statusType] = !selectedTodo.status[statusType];
   }
 
@@ -55,4 +61,6 @@ export class TodosService {
   deleteTodoPermanent(todo: Todo, id: number) {
     return this._http.delete(`${environment.baseUrl}/todos/${id}}`);
   }
+
+
 }

@@ -1,22 +1,16 @@
-<section class="m-auto mt-5 w-50" style="background-color: #f7eef0">
-  <div>
-    <form #taskForm="ngForm" (ngSubmit)="submitMyTodo(taskForm)" >
+<section class="m-auto mt-2 w-50 ">
+  <div class="my-2">
+    <form #taskForm="ngForm" (ngSubmit)="submitMyTodo(taskForm)">
       <div class="form-group">
-        <input
-          #title="ngModel" 
-          type="text"
-          class="form-control me-1 my-2"
-          placeholder="Begin new Achievment"
-          autocomplete="off"
-          required
-          minlength="3"
-          name="title"
-          ngModel
-        />
-        <p *ngIf="(title.touched && title.errors)" class="text-danger text-uppercase">Title is required</p>
-        <p *ngIf="title.touched && title.errors?.['title']" class="text-danger text-uppercase">Title is not valid</p>
-        <br>
-        <div class="d-flex align-items-center justify-content-between">
+        <input #title="ngModel" type="text" class="form-control pt-2" placeholder="Begin New Achievement"
+          autocomplete="off" required name="title" ngModel />
+        <p *ngIf="(title.touched && title.errors)" class=" mt-2 ms-3 fs-6 text-danger text-uppercase">Title is required
+        </p>
+        <p *ngIf="title.touched && title.errors?.['title']" class="mt-2  ms-3 fs-6 text-danger text-uppercase">Title is
+          not valid
+        </p>
+        <!-- <br> -->
+        <!-- <div class="d-flex align-items-center justify-content-between">
           <div >
           <input
             type="radio"
@@ -50,22 +44,17 @@
           <button type="submit" class="btn btn-primary">
             Add
           </button>
-        </div>
+        </div> -->
       </div>
     </form>
     <br>
   </div>
-  <div>
-    <ul>
-      <app-todo
-        *ngFor="let todo of todos"
-        [todo]="todo"
-
-        [todosCategory] = "todosCategory"
-        (deleteTodoEvent)="editTodoStatus(todo, 'deleted')"
-        (completeTodoEvent)="editTodoStatus(todo, 'completed')"
-        (favouriteTodoEvent)="editTodoStatus(todo, 'favourite')"
-      ></app-todo>
+  <div class="m-auto pt-4 rounded shadow" style="background-color: #f7eef0">
+    <ul class="px-4 pb-2">
+      <p *ngIf="filteredTodos.length<1" class="mx-auto"> No Matching Todos!</p>
+      <app-todo *ngFor="let todo of filteredTodos" [todo]="todo" [todosCategory]="todosCategory"
+        (deleteTodoEvent)="editTodoStatus(todo, 'deleted')" (completeTodoEvent)="editTodoStatus(todo, 'completed')"
+        (favouriteTodoEvent)="editTodoStatus(todo, 'favourite')"></app-todo>
     </ul>
   </div>
 </section>

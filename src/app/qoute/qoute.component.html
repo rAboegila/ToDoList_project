@@ -1,0 +1,36 @@
+<section class="">
+    <div class="container py-5 h-100" style="width:40%">
+        <div class="row d-flex align-items-center h-100">
+            <div class="col mb-4 mb-lg-0">
+                <figure class="text-center bg-white py-5 px-4 shadow-2" style="border-radius: .75rem;">
+                    <div class="text-center mb-2 pb-2">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-quotes/bulb.webp"
+                            alt="Bulb" width="80">
+                    </div>
+
+                    <!-- <i class="bi bi-gem fs-2 mb-4" style="color: #f9a169;"></i> -->
+
+                    <blockquote class="blockquote pb-2">
+                        <p>
+                            <span class="fs-3 qouteArrow ">&#x275D;</span>
+                            <!-- <i class="qouteArrow bi bi-chevron-double-left"></i> -->
+                            <!-- <span class="qouteArrow material-symbols-outlined">
+                                format_quote
+                            </span> -->
+                            <span *ngIf="user" class="lead font-italic">{{user.quote}}</span>
+                            <!-- <span class="material-icons-outlined">
+                                format_quote
+                            </span> -->
+                            <span class="fs-3 qouteArrow ">&#x275E;</span>
+
+                            <!-- <i class="qouteArrow bi bi-chevron-double-right"></i> -->
+                        </p>
+                    </blockquote>
+                    <figcaption *ngIf="user" class="blockquote-footer mb-0 font-italic">
+                        {{user.userName}}
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>

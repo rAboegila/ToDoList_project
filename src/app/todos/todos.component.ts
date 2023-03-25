@@ -11,9 +11,10 @@ import { TodosService } from '../todos.service';
 })
 export class TodosComponent {
   todos: Todo[] = [];
+  filteredTodos: Todo[] = [];
   newTodoTitle: string = '';
-  todosCategory!:TodoFilter;
-  @ViewChild('taskForm') myTodo!:NgForm ;
+  todosCategory!: TodoFilter;
+  @ViewChild('taskForm') myTodo!: NgForm;
 
   todoStatus!: TodoStatus;
 
@@ -22,22 +23,30 @@ export class TodosComponent {
       this.todosCategory = res;
       this.getTodos(res)
     })
+
   }
 
   getTodos(filter: TodoFilter) {
     this._todosService.getTodos().subscribe({
       next: (result) => {
         this.todos = result.data;
-        this.todos = this._todosService.filterTodo(this.todos, filter);
+        this.updateCounters();
+        console.log(this._todosService.counters);
+        this.filteredTodos = this._todosService.filterTodo(this.todos, filter);
+
       }
     });
   }
-
+  updateCounters() {
+    this._todosService.counters.deletedCount = this.todos.filter(todo => todo.status.deleted).length
+    this._todosService.counters.favCount = this.todos.filter(todo => todo.status.favourite && !todo.status.deleted).length
+    this._todosService.counters.completedCount = this.todos.filter(todo => todo.status.completed && !todo.status.deleted).length
+  }
   addTodo() {
     this._todosService.addTodo(this.myTodo.value.title).subscribe({
       next: (res) => {
         const { title, status, _id } = res.data
-        this.todos.push({ _id, title, status, priority:this.myTodo.value.priority })
+        this.filteredTodos.push({ _id, title, status, priority: this.myTodo.value.priority })
       },
       error: (err) => {
         alert(err.error.message);
@@ -61,21 +70,24 @@ export class TodosComponent {
         break;
     }
 
-    
-    // this.getTodos(this._activatedRoute.snapshot.params['status'])
+
+
     this._todosService.toggleTodoStatus(selectedTodo, this.todoStatus);
     this._todosService.updateTodos(selectedTodo).subscribe({
       next(value) {
-        console.log(value);        
+        console.log('update', value);
+
       },
       error(err) {
         alert(err.error.message);
       },
     })
+    this.updateCounters();
+
   }
 
-  
-  submitMyTodo(form:NgForm) {
+
+  submitMyTodo(form: NgForm) {
     this.addTodo();
     form.reset()
   }

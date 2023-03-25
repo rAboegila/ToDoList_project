@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { QouteComponent } from './qoute/qoute.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AuthInterceptor } from './auth.interceptor';
     NavbarComponent,
     LoginComponent,
     NotfoundComponent,
-    RegisterComponent
+    RegisterComponent,
+    QouteComponent
   ],
   imports: [
     BrowserModule,

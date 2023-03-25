@@ -1,0 +1,21 @@
+.normal {
+  text-decoration: none;
+}
+
+.completed,
+.todo:hover {
+  text-decoration: line-through;
+  background-color: rgba(150, 255, 155, 0.15);
+}
+
+#deleteIcon {
+  display: none;
+  border: none !important;
+}
+#favIcon {
+  border: none !important;
+}
+
+.todo:hover #deleteIcon {
+  display: inline;
+}

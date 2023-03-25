@@ -3,39 +3,51 @@
         <div class="d-flex align-items-start">
             <button class="btn btn-warning btn-lg" *ngIf="!isLogin" (click)="register()"> Register</button>
             <button class="btn btn-warning btn-lg ms-3" *ngIf="!isLogin" routerLink="/login"> Login</button>
+            <button class="btn btn-warning btn-lg" *ngIf="isLogin" (click)="logout()">Log Out</button>
         </div>
-        <button class="btn btn-warning btn-lg" *ngIf="isLogin" (click)="logout()">Log Out</button>
         <ng-container *ngIf="isLogin && user">
-            <ul class="navbar-nav ms-auto d-flex flex-row">
-
-                <li class="nav-item me-3 me-lg-0">
+            <ul class="navbar-nav mb-2 mb-lg-0 ">
+                <li class="navItem nav-item ">
+                    <a class="nav-link" routerLink="" (click)="showAll()">
+                        <i class="text-warning bg-white fs-1 bi bi-list-check"></i>
+                    </a>
+                </li>
+                <li class="navItem nav-item ">
                     <a class="nav-link" routerLink="" (click)="showFav()">
                         <i class="text-danger fs-1 bi bi-heart-fill"></i>
+                        <span class="badge notification rounded-pill bg-secondary ">{{counters.favCount}}</span>
+
                     </a>
                 </li>
-                <li class="nav-item me-3 me-lg-0">
+                <li class="navItem nav-item ">
                     <a class="nav-link" routerLink="" (click)="showDeleted()">
                         <i class="text-primary fs-1 bi bi-archive-fill"></i>
+                        <span class="badge  notification bg-secondary ">{{counters.deletedCount}}</span>
                     </a>
                 </li>
-                <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" routerLink="" (click)="showCompeleted()">
-                        <i class=" text-success fs-1 bi bi-check-square-fill"></i>
-                    </a>
-                </li>
-                <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link">
-                        {{user.userName}}
-                    </a>
-                </li>
+                <li class="navItem nav-item ">
+                    <a class="nav-link " routerLink="" (click)="showCompeleted()">
+                        <i class="text-success fs-1 bi bi-check-square-fill"></i>
+                        <span class="badge notification bg-secondary">{{counters.completedCount}}</span>
 
-                <li class="nav-item me-3 me-lg-0">
+                    </a>
+                </li>
+                <li class=" nav-item ">
                     <a class="nav-link">
                         <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg"
                             class="rounded-circle z-depth-0" alt="avatar image" height="60" />
+                    </a>
+                </li>
+                <li class="navItem nav-item ">
+                    <a class="nav-link" id="username">
+                        {{user.userName}}
                     </a>
                 </li>
             </ul>
         </ng-container>
     </div>
 </nav>
+
+<ng-container *ngIf="isLogin">
+    <app-qoute></app-qoute>
+</ng-container>

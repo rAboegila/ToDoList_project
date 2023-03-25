@@ -9,11 +9,11 @@ export interface Todo {
   priority: string;
 }
 export interface User {
-  readonly id: number;
-  username: string;
+  readonly id?: number;
+  userName: string;
   quote: string;
   loggedIn: boolean;
-  password: string;
+  password?: string;
 }
 
 export enum TodoFilter {
@@ -24,7 +24,7 @@ export enum TodoFilter {
 }
 
 export enum TodoStatus {
- 
+
   FAVOURITE = 'favourite',
   COMPLETED = 'completed',
   DELETED = 'deleted',

@@ -1,3 +1,20 @@
 .myNav {
-  background-color: rgba(219, 209, 209, 0.15);
+  background-color: rgba(182, 171, 171, 0.2);
+}
+#username {
+  font-size: 22px;
+  line-height: 53px;
+  letter-spacing: 0.043em;
+  font-weight: 500;
+}
+.navItem {
+  padding-right: 30px;
+}
+
+.notification {
+  line-height: 0.6;
+  font-size: 13px;
+  letter-spacing: 0em;
+  margin-left: -20px;
+  font-weight: bold;
 }
