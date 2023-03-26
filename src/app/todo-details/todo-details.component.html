@@ -1,52 +1,48 @@
-<div
-  class="d-flex align-items-center justify-content-center w-75 m-auto"
-  id="details"
->
-  <!-- <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate' > </ejs-calendar > -->
-  <div class="text-center">
-    <h1>{{ todo.title }}</h1>
-    <br />
-    <p>
-      {{ todo.description }}
-    </p>
-    <div class="d-flex align-items-center justify-content-between">
-      <input class="form-control" type="text" name="step" [(ngModel)]="step" />
-      <button class="btn btn-danger" type="button" (click)="modifySteps()">
-        Add
-      </button>
-    </div>
-    <br />
-    <ul>
-      <li class="list-group-item" *ngFor="let step of todo.steps">
-        <input
-          type="checkbox"
-          (click)="toggleStepState(step)"
-          [ngClass]=" step.isChecked ? 'text-decoration-line-through' : 'text-decoration-none'"
-        />{{ step.text }}
-      </li>
-    </ul>
-    <h3>
-      priority: {{ todo.priority }}
-      <i
-        class="bi bi-square-fill"
-        [ngClass]="
+<ng-container *ngIf="todo">
+  <div class="w-75 m-auto shadow rounded my-4" id="details">
+    <!-- <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate' > </ejs-calendar > -->
+    <div class="text-center">
+      <h1>{{ todo.title }}</h1>
+      <br />
+      <p *ngIf="todo.description">
+        {{ todo.description }}
+      </p>
+
+      <h3>
+        priority: {{ todo.priority }}
+        <i class="bi bi-square-fill" [ngClass]="
           todo.priority === 'High'
             ? ' bi bi-square-fill  high'
             : todo.priority === 'Moderate'
             ? ' bi bi-square-fill  moderate'
             : ' bi bi-square-fill  low'
-        "
-      ></i>
-      <i
-        [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="text-danger fs-5 bi"></i>
-        <i
-        [ngClass]="todo.status.completed ? 'bi bi-check text-success':'bi bi-x text-danger'" class="text-success fs-5 bi" style="font-size: large;"></i>
-    </h3>
-
-    <ul></ul>
+        "></i>
+        <i [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="text-danger fs-5 bi"></i>
+        <i [ngClass]="todo.status.completed ? 'bi bi-check text-success':'bi bi-x text-danger'"
+          class="text-success fs-5 bi" style="font-size: large;"></i>
+      </h3>
+      <br>
+      <h3 class="counter mx-auto shadow rounded" *ngIf="!todo.status.completed">{{tickTock}} left</h3>
+      <h3 class="counter mx-auto shadow rounded" *ngIf="todo.status.completed">Task finished</h3>
+      <br>
+      <br>
+    </div>
+    <div class="d-flex align-items-center justify-content-between m-auto steps-form">
+      <input class="form-control" type="text" name="step" id="step" [(ngModel)]="step"
+        placeholder="add steps to your todo" />
+      <button class="btn btn-danger" type="button" (click)="modifySteps()">
+        Add
+      </button>
+    </div>
+    <br />
+    <ul class="text-center">
+      <li class="list-group-item fs-3" *ngFor="let step of todo.steps">
+        <input type="checkbox" [checked]="step.isChecked" (click)="toggleStepState(step)" /> <span class="ms-1"
+          [ngClass]=" step.isChecked ? 'text-decoration-line-through' : 'text-decoration-none'"> {{ step.text }}</span>
+      </li>
+    </ul>
   </div>
-
-  <div
+  <!-- <div
     class="container w-50"
     fxLayout="row"
     fxLayout.xs="column"
@@ -59,5 +55,5 @@
       (selectedChange)="onSelect($event)"
        [minDate]="today"
     ></mat-calendar>
-  </div>
-</div>
+  </div> -->
+</ng-container>

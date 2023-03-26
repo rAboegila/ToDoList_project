@@ -1,5 +1,5 @@
 <section class="TDForm">
-    <form class="w-50 m-auto my-5 rounded shadow" #form="ngForm" style="background-color: #f7eef0;padding: 2rem;"
+    <form class="m-auto my-5 rounded shadow" #form="ngForm" 
         (ngSubmit)="login(form)">
         <div *ngIf="errors" class="alert alert-danger d-flex align-items-center mx-auto mb-2" role="alert">
             <i class="bi bi-exclamation-circle me-2"></i>
@@ -23,6 +23,6 @@
             </div>
         </div>
 
-        <button class="btn btn-primary mt-3" type="submit" [disabled]="!form.valid">login</button>
+        <button class="btn btn-reg mt-3" type="submit" [disabled]="!form.valid">login</button>
     </form>
 </section>

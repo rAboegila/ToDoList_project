@@ -1,4 +1,4 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
 
 #details{
    background-color: #f7eef0;
@@ -26,3 +26,22 @@
     color: rgb(154, 232, 45);
 }
 
+.counter{
+    background: #dfd8d8;
+    width: fit-content;
+    padding: 2rem 4rem;
+}
+
+.steps-form{
+    width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    .steps-form{
+        width: 95%;
+        flex-direction: column;
+    }
+    .steps-form button{
+        margin-top:0.5rem
+    }
+}

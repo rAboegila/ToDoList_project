@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap');
 
+form{
+    width: 50%;
+    background-color: #f7eef0;
+    padding: 2rem;
+    height: 100%;
+}
 label,
 button {
     font-size: 1.2rem;
@@ -20,4 +26,15 @@ p {
 
 .valid {
     border: 1px solid green;
+}
+.btn-reg{
+    background-color: #ffd147;
+    display: block;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    form{
+        width: 75%;
+    }
 }

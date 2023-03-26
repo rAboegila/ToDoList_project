@@ -1,21 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
 .normal {
   text-decoration: none;
 }
 
 .completed,
 .todo:hover {
-  text-decoration: line-through;
   background-color: rgba(150, 255, 155, 0.15);
 }
+.completed{
+  text-decoration: line-through;
+}
 
-#deleteIcon {
+/* #deleteIcon {
   display: none;
   border: none !important;
-}
+} */
 #favIcon {
   border: none !important;
 }
 
 .todo:hover #deleteIcon {
   display: inline;
+}
+.todo{
+  font-family: 'Handlee', cursive;
+  font-size: 1.3rem;
 }

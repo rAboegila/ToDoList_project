@@ -13,7 +13,7 @@ export class UsersService {
   loggedIn = new BehaviorSubject(false)
   loggedIn$ = this.loggedIn.asObservable();
 
-  constructor(private _http: HttpClient,private _cookieService:CookieService , private _router:Router) { }
+  constructor(private _http: HttpClient, private _cookieService: CookieService, private _router: Router) { }
 
   register(formValues: { userName: string, password: string, quote: string }) {
     return this._http.post(`${environment.baseUrl}users/register`, formValues)
@@ -32,12 +32,58 @@ export class UsersService {
   }
 
   logout() {
-    this._cookieService.delete('token');  
+    this._cookieService.delete('token');
     this.loggedIn.next(false);
-    this._router.navigate(['/'])
+    location.reload();
+    this._router.navigate(['/']);
   }
 
   getUser() {
     return this._http.get(`${environment.baseUrl}users`)
+  }
+
+  getBrowserName() {
+    const agent = navigator.userAgent.toLowerCase()
+    switch (true) {
+      case agent.indexOf('edg') != -1:
+        return 'Microsoft Edge';
+      case agent.indexOf('opr') != -1 && !!(<any>window).opr:
+        return 'Opera';
+      case agent.indexOf('chrome') != -1 && !!(<any>window).chrome:
+        return 'Google Chrome';
+      case agent.indexOf('trident') != -1:
+        return 'ie';
+      case agent.indexOf('firefox') != -1:
+        return 'FireFox';
+      case agent.indexOf('safari') != -1:
+        return 'Safari';
+      default:
+        return 'other';
+    }
+  }
+  getOS() {
+    const agent = navigator.userAgent.toLowerCase()
+    switch (true) {
+      case agent.indexOf("win") != -1:
+        return "Windows OS";
+      case agent.indexOf("mac") != -1:
+        return "Macintosh";
+      case agent.indexOf("linux") != -1:
+        return "Linux OS";
+      case agent.indexOf("android") != -1:
+        return "Android OS";
+      case agent.indexOf("like mac") != -1:
+        return "iOS";
+      case agent.indexOf("x11") != -1:
+        return "UNIX OS";
+      default:
+        return "Unknown OS";
+    }
+  }
+
+
+
+  checkIfOnline() {
+    return navigator.onLine;
   }
 }

@@ -1,48 +1,43 @@
-<section>
-
-    <form class="w-50 m-auto my-5 rounded shadow" [formGroup]="regForm" (ngSubmit)="registerUser(regForm)"
-        style="background-color: #f7eef0;padding: 2rem;">
-        <div *ngIf="errors" class="alert alert-danger d-flex align-items-center mx-auto mb-2" role="alert">
-            <i class="bi bi-exclamation-circle me-2"></i>
-            <div>
-                {{errors}} </div>
-        </div>
+<form class="m-auto my-5 rounded shadow" [formGroup]="regForm" (ngSubmit)="registerUser(regForm)">
+    <div *ngIf="errors" class="alert alert-danger d-flex align-items-center mx-auto mb-2" role="alert">
+        <i class="bi bi-exclamation-circle me-2"></i>
         <div>
-            <label for="username">Username</label>
-            <input class="form-control"
-                [ngClass]="regForm.get('userName')?.touched ? regForm.get('userName')?.errors ? 'not-valid':'valid' :''"
-                formControlName="userName" name="userName" type="text" id="username">
-            <div class="mt-2 text-danger" *ngIf="regForm.get('userName')?.errors && regForm.get('userName')?.touched">
-                <p *ngIf="regForm.get('userName')?.errors?.['required']"><i class="bi bi-exclamation-circle me-2"></i>
-                    userName required</p>
-                <p *ngIf="regForm.get('userName')?.errors?.['minlength']"><i
-                        class="bi bi-exclamation-circle me-2"></i>userName min length 3</p>
-            </div>
+            {{errors}} </div>
+    </div>
+    <div>
+        <label for="username">Username</label>
+        <input class="form-control"
+            [ngClass]="regForm.get('userName')?.touched ? regForm.get('userName')?.errors ? 'not-valid':'valid' :''"
+            formControlName="userName" name="userName" type="text" id="username">
+        <div class="mt-2 text-danger" *ngIf="regForm.get('userName')?.errors && regForm.get('userName')?.touched">
+            <p *ngIf="regForm.get('userName')?.errors?.['required']"><i class="bi bi-exclamation-circle me-2"></i>
+                userName required</p>
+            <p *ngIf="regForm.get('userName')?.errors?.['minlength']"><i
+                    class="bi bi-exclamation-circle me-2"></i>userName min length 3</p>
         </div>
-        <div>
-            <label for="password">Password</label>
-            <input class="form-control"
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input class="form-control"
             [ngClass]="regForm.get('password')?.touched ? regForm.get('password')?.errors ? 'not-valid':'valid' :''"
             formControlName="password" name="password" type="password" id="password">
-            <div class="mt-2 text-danger" *ngIf="regForm.get('password')?.errors && regForm.get('password')?.touched">
-                <p *ngIf="regForm.get('password')?.errors?.['required']"><i class="bi bi-exclamation-circle me-2"></i>
-                    password required</p>
-                <p
-                    *ngIf="regForm.get('password')?.errors?.['minlength'] ||regForm.get('password')?.errors?.['pattern']">
-                    <i class="bi bi-exclamation-circle me-2"></i>password must be at least 5 chars
-                </p>
-            </div>
+        <div class="mt-2 text-danger" *ngIf="regForm.get('password')?.errors && regForm.get('password')?.touched">
+            <p *ngIf="regForm.get('password')?.errors?.['required']"><i class="bi bi-exclamation-circle me-2"></i>
+                password required</p>
+            <p *ngIf="regForm.get('password')?.errors?.['minlength'] ||regForm.get('password')?.errors?.['pattern']">
+                <i class="bi bi-exclamation-circle me-2"></i>password must be at least 5 chars
+            </p>
         </div>
-        <div>
-            <label for="quote">Quote</label>
-            <input class="form-control" 
+    </div>
+    <div>
+        <label for="quote">Quote</label>
+        <input class="form-control" placeholder="favourite quote"
             [ngClass]="regForm.get('quote')?.touched ? regForm.get('quote')?.errors ? 'not-valid':'valid' :''"
             formControlName="quote" name="quote" type="text" id="quote">
-            <div class="mt-2 text-danger" *ngIf="regForm.get('quote')?.errors && regForm.get('quote')?.touched">
-                <p *ngIf="regForm.get('quote')?.errors?.['required']"><i class="bi bi-exclamation-circle me-2"></i>
-                    quote required</p>
-            </div>
+        <div class="mt-2 text-danger" *ngIf="regForm.get('quote')?.errors && regForm.get('quote')?.touched">
+            <p *ngIf="regForm.get('quote')?.errors?.['required']"><i class="bi bi-exclamation-circle me-2"></i>
+                quote required</p>
         </div>
-        <button [disabled]="regForm.invalid" class="btn btn-primary mt-3" type="submit">Register</button>
-    </form>
-</section>
+    </div>
+    <button [disabled]="regForm.invalid" class="btn btn-reg mt-3" type="submit">Register</button>
+</form>

@@ -20,7 +20,8 @@ export class AuthInterceptor implements HttpInterceptor {
     let token: string | null = this._cookieService.get('token');
 
     if (token && !this.checkIfLogin(request.url)) {
-      request = request.clone({ headers: request.headers.append('Authorization', token) });
+      request = request.clone({ headers: request.headers.append('Authorization', token)  });
+      // request = request.clone({ headers: request.headers.append('Permissions-Policy', 'battery=<allowlist>;')  });
     }
     return next.handle(request);
   }

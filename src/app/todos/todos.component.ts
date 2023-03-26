@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Todo, TodoFilter, TodoStatus } from '../lib';
@@ -14,9 +14,10 @@ export class TodosComponent {
   filteredTodos: Todo[] = [];
   newTodoTitle: string = '';
   todosCategory!: TodoFilter;
-  minDate = Date.now();
-  maxDate = new Date(2024,0,1);
-  startDate = Date.now();
+  minDate = new Date().toISOString().split('T')[0];
+  maxDate = new Date(2024, 0, 1).toISOString().split('T')[0];
+  priority = "Low"
+
   @ViewChild('taskForm') myTodo!: NgForm;
 
   todoStatus!: TodoStatus;
@@ -33,24 +34,24 @@ export class TodosComponent {
     this._todosService.getTodos().subscribe({
       next: (result) => {
         this.todos = result.data;
-        this.updateCounters();
-        console.log(this._todosService.counters);
         this.filteredTodos = this._todosService.filterTodo(this.todos, filter);
-
+        if (this.todos.length) this.updateCounters()
       }
     });
   }
   updateCounters() {
-    this._todosService.counters.deletedCount = this.todos.filter(todo => todo.status.deleted).length
-    this._todosService.counters.favCount = this.todos.filter(todo => todo.status.favourite && !todo.status.deleted).length
-    this._todosService.counters.completedCount = this.todos.filter(todo => todo.status.completed && !todo.status.deleted).length
+    let allCount = this.todos.length;
+    this._todosService.counters.deletedCount = Math.floor((this.todos.filter(todo => todo.status.deleted).length) / allCount * 100)
+    this._todosService.counters.favCount = Math.floor((this.todos.filter(todo => todo.status.favourite && !todo.status.deleted).length) / allCount * 100)
+    this._todosService.counters.completedCount = Math.floor((this.todos.filter(todo => todo.status.completed && !todo.status.deleted).length) / allCount * 100)
   }
   addTodo() {
-    console.log({...this.myTodo.value});
     this._todosService.addTodo({ ...this.myTodo.value }).subscribe({
       next: (res) => {
-        const { title, status, _id } = res.data
-        this.todos.push({ _id, title, status, priority:this.myTodo.value.priority, deadline: this.myTodo.value.deadline })
+        const { title, status, _id, deadline } = res.data
+        this.todos.push({ status, _id, title, deadline });
+        this.filteredTodos.push({ status, _id, title, deadline });
+        
       },
       error: (err) => {
         alert(err.error.message);
@@ -74,28 +75,22 @@ export class TodosComponent {
         break;
     }
 
-
-
     this._todosService.toggleTodoStatus(selectedTodo, this.todoStatus);
     this._todosService.updateTodos(selectedTodo).subscribe({
       next(value) {
-        console.log('update', value);
-
+        selectedTodo = value
       },
       error(err) {
         alert(err.error.message);
       },
     })
+
+    this.filteredTodos = this._todosService.filterTodo(this.todos, this.todosCategory);
     this.updateCounters();
-
   }
-
 
   submitMyTodo(form: NgForm) {
-    console.log(form.value);
-    
     this.addTodo();
-    form.reset()
+    form.reset()    
   }
-
 }

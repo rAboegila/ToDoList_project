@@ -1,0 +1,21 @@
+<ng-container *ngIf="isLogin">
+
+<div class="fixed-bottom bg-white">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <span class="fw-bold"> {{OS}} - {{Browser}} </span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <i class="bi bi-battery-half fs-3 pe-2"></i>
+                <div id="battery">
+                    {{batteryLevel}}%
+                </div>
+            </div>
+            <!-- <div class="fw-bold">
+                {{isOnline}}
+            </div> -->
+        </div>
+    </div>
+</div>
+</ng-container>

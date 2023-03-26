@@ -15,9 +15,7 @@ export class QouteComponent {
       if (res) {
         this._userService.getUser().subscribe(response => {
           this.user = response;
-          console.log(response);
         })
-        this.user.loggedIn = res
       }
     })
 

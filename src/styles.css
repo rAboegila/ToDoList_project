@@ -1,13 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 body {
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     rgba(244, 249, 255, 1) 0%,
     rgba(246, 234, 240, 1) 78%,
     rgba(247, 236, 237, 1) 100%
-  );
-
+  ); */
+  background: rgba(247, 236, 237, 1);
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
   min-height: 100%;
@@ -15,11 +14,11 @@ body {
 
 body::after {
   content: "";
-  background: url(./assets/PatternUnit.png);
+  background: url('assets/PatternUnit.png');
   width: 100%;
   height: 100%;
   opacity: 0.2;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;

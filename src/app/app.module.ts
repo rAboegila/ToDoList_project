@@ -21,6 +21,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatCardModule } from '@angular/material/card';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserAgentComponent } from './user-agent/user-agent.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { MatCardModule } from '@angular/material/card';
     LoginComponent,
     NotfoundComponent,
     RegisterComponent,
-    QouteComponent
+    QouteComponent,
+    UserDetailsComponent,
+    UserAgentComponent
   ],
   imports: [
     BrowserModule,

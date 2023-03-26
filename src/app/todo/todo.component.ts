@@ -8,7 +8,6 @@ import { Todo, TodoFilter } from '../lib';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent {
-  openDeleteModal: boolean = false;
   @Input() todosCategory: string = TodoFilter.ALL;
   @Input() todo!: Todo;
 
@@ -16,13 +15,7 @@ export class TodoComponent {
   @Output() completeTodoEvent = new EventEmitter<number>();
   @Output() favouriteTodoEvent = new EventEmitter<number>();
   @Output() undoDeleteEvent = new EventEmitter<Todo>();
-  constructor(private _router: Router) {}
-
-  confirmRemoveTodo(): void {
-    // access right todo
-    this.openDeleteModal = true;
-    this.removeTodo();
-  }
+  constructor(private _router: Router) { }
 
   removeTodo(): void {
     // access wrong todo
@@ -41,6 +34,10 @@ export class TodoComponent {
   }
 
   goToDetails() {
-    this._router.navigate(['todo', `${this.todo._id}`]);
+    if (this.todosCategory === 'deleted') {
+      alert("restore todo to continue")
+    } else {
+      this._router.navigate(['todo', `${this.todo._id}`]);
+    }
   }
 }

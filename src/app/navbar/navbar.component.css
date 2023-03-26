@@ -1,5 +1,5 @@
-.myNav {
-  background-color: rgba(182, 171, 171, 0.2);
+.navbar {
+  --bs-navbar-padding-y: 0;
 }
 #username {
   font-size: 22px;
@@ -17,4 +17,15 @@
   letter-spacing: 0em;
   margin-left: -20px;
   font-weight: bold;
+}
+
+.active-link{
+  /* background-color: #f6e1e6; */
+  background-color: #fff;
+}
+.btn-login{
+  background-color: #ffdf80;
+}
+.btn-login:hover , .btn-login:active , .btn-login:focus, .btn-active{
+  background-color: #ffd147;
 }
