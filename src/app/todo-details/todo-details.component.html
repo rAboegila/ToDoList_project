@@ -1,6 +1,5 @@
 <ng-container *ngIf="todo">
   <div class="w-75 m-auto shadow rounded my-4" id="details">
-    <!-- <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate' > </ejs-calendar > -->
     <div class="text-center">
       <h1>{{ todo.title }}</h1>
       <br />
@@ -42,18 +41,4 @@
       </li>
     </ul>
   </div>
-  <!-- <div
-    class="container w-50"
-    fxLayout="row"
-    fxLayout.xs="column"
-    fxLayoutWrap
-    fxLayoutGap="0.5%"
-    fxLayoutAlign="center"
-  >
-    <mat-calendar
-      [selected]="todo.deadline"
-      (selectedChange)="onSelect($event)"
-       [minDate]="today"
-    ></mat-calendar>
-  </div> -->
 </ng-container>
