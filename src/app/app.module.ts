@@ -15,8 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { QouteComponent } from './qoute/qoute.component';
 import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
-import { MatNativeDateModule} from '@angular/material/core';
-import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -24,6 +24,8 @@ import { MatCardModule } from '@angular/material/card';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserAgentComponent } from './user-agent/user-agent.component';
 
+import { AboutUsComponent } from './about-us/about-us.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { UserAgentComponent } from './user-agent/user-agent.component';
     RegisterComponent,
     QouteComponent,
     UserDetailsComponent,
-    UserAgentComponent
+    UserAgentComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,13 +48,8 @@ import { UserAgentComponent } from './user-agent/user-agent.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CalendarModule,
-    MatNativeDateModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatInputModule,
     BrowserAnimationsModule,
-    MatCardModule
+    FontAwesomeModule,
   ],
   providers: [
     AuthInterceptor,

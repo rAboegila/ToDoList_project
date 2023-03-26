@@ -9,7 +9,7 @@ import { UsersService } from '../users.service';
   styleUrls: ['./qoute.component.css']
 })
 export class QouteComponent {
-  user: User | any
+  user: User | any;
   constructor(private _userService: UsersService, private _router: Router) {
     this._userService.loggedIn$.subscribe((res) => {
       if (res) {

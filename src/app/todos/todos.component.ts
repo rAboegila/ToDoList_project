@@ -31,6 +31,7 @@ export class TodosComponent {
   }
 
   getTodos(filter: TodoFilter) {
+    console.log('getTodos');
     this._todosService.getTodos().subscribe({
       next: (result) => {
         this.todos = result.data;
@@ -51,7 +52,7 @@ export class TodosComponent {
         const { title, status, _id, deadline } = res.data
         this.todos.push({ status, _id, title, deadline });
         this.filteredTodos.push({ status, _id, title, deadline });
-        
+
       },
       error: (err) => {
         alert(err.error.message);
@@ -91,6 +92,6 @@ export class TodosComponent {
 
   submitMyTodo(form: NgForm) {
     this.addTodo();
-    form.reset()    
+    form.reset()
   }
 }

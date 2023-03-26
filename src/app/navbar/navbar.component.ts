@@ -37,7 +37,7 @@ export class NavbarComponent {
 
   showAll() {
     this._todosService.setFilter(TodoFilter.ALL);
-    // console.log('user\n', this.user)
+    this._router.navigate(['/todos/all'])
   }
 
   showFav() {
@@ -51,5 +51,8 @@ export class NavbarComponent {
   }
   logout() {
     this._userService.logout()
+  }
+  about() {
+    this._router.navigate(['/about'])
   }
 }

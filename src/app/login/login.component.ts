@@ -25,8 +25,8 @@ export class LoginComponent {
       this._todosService.setFilter(TodoFilter.ALL)
       this._router.navigate(['/', 'todos', 'all']);
     },
-      (err) => {        
-        this.errors= err.error.message
+      (err) => {
+        this.errors = err.error.message
       });
   }
 }

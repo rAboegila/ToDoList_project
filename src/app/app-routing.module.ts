@@ -8,13 +8,16 @@ import { TodoDetailsComponent } from './todo-details/todo-details.component';
 import { TodosComponent } from './todos/todos.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: UserDetailsComponent },
-  { path: 'todos', redirectTo: 'todos/all', pathMatch: 'full'},
+  { path: 'todos', redirectTo: 'todos/all', pathMatch: 'full' },
+  { path: 'about', component: AboutUsComponent },
+  { path: 'todos', redirectTo: 'todos/all', pathMatch: 'full' },
   { path: 'todos/:status', component: TodosComponent, canActivate: [AuthGuard] },
   { path: 'todo/:id', component: TodoDetailsComponent, canActivate: [AuthGuard] },
   { path: '**', component: NotfoundComponent }
