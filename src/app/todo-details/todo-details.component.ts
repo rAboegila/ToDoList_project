@@ -1,7 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TodosService } from '../todos.service';
-import { MatNativeDateModule } from '@angular/material/core'
 import { Todo, todoStep } from '../lib';
 
 @Component({
@@ -9,14 +8,14 @@ import { Todo, todoStep } from '../lib';
   templateUrl: './todo-details.component.html',
   styleUrls: ['./todo-details.component.css']
 })
-export class TodoDetailsComponent implements AfterViewInit{
+export class TodoDetailsComponent implements AfterViewInit {
 
   todo!: Todo;
   step: string = "";
   isChecked = false;
   steps: todoStep[] = [];
   today: Date = new Date()
-  tickTock!:string;
+  tickTock!: string;
 
   constructor(private _todosService: TodosService, private _router: ActivatedRoute) {
     _todosService.getTodoById(_router.snapshot.params['id']).subscribe({
@@ -43,7 +42,7 @@ export class TodoDetailsComponent implements AfterViewInit{
   modifySteps() {
     if (this.step.trim().length > 0) { this.todo.steps?.push({ text: this.step, isChecked: false }) }
     else { alert("Please enter a right step") }
-    
+
     this._todosService.updateTodos(this.todo).subscribe((res => { console.log(res) }))
   }
 
@@ -53,7 +52,7 @@ export class TodoDetailsComponent implements AfterViewInit{
 
   }
 
-  countDown(){
+  countDown() {
     let now = new Date().getTime();
     let distance = new Date(this.todo.deadline).getTime() - now;
     let days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -65,7 +64,7 @@ export class TodoDetailsComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     setInterval(() => {
-     this.countDown()
+      this.countDown()
     }, 1000);
   }
 }

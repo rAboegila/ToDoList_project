@@ -14,13 +14,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { QouteComponent } from './qoute/qoute.component';
-import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatCardModule } from '@angular/material/card';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserAgentComponent } from './user-agent/user-agent.component';
 
