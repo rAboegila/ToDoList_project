@@ -21,6 +21,14 @@ export class TodosService {
   constructor(private _http: HttpClient) { }
 
   addTodo(newTodo: any) {
+
+    let tomorrow = new Date()
+    tomorrow.setDate(new Date().getDate() + 1)
+
+    if (newTodo.deadline == "")
+      newTodo.deadline = tomorrow.toISOString().split('T')[0];
+    if (newTodo.priority == "")
+      newTodo.priority = "Low"
     return this._http.post<any>(`${environment.baseUrl}todos`, newTodo
     )
   }

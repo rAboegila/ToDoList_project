@@ -18,14 +18,50 @@
   margin-left: -20px;
   font-weight: bold;
 }
-
-.active-link{
-  /* background-color: #f6e1e6; */
-  background-color: #fff;
+@media (width <= 768px) {
+  .notification {
+    font-size: 10px;
+    margin-left: -11px;
+  }
+  .navbar-nav {
+    flex-direction: row;
+    margin-top: 5px;
+    margin-top: 20px;
+    margin-left: 31px;
+  }
 }
-.btn-login{
+
+.notification-sm {
+  font-size: 11px;
+  margin-left: 2px;
+}
+
+.active-link > #all {
+  /* background-color: #f6e1e6; */
+  color: #daa506 !important;
+}
+#all {
+  background-color: rgba(250, 237, 221, 0.45);
+}
+.active-link > #fav {
+  /* background-color: #f6e1e6; */
+  color: #b62a38 !important;
+}
+
+.active-link > #deleted {
+  /* background-color: #f6e1e6; */
+  color: #0c5cd3 !important;
+}
+.active-link > #complete {
+  /* background-color: #f6e1e6; */
+  color: #105a38 !important;
+}
+.btn-login {
   background-color: #ffdf80;
 }
-.btn-login:hover , .btn-login:active , .btn-login:focus, .btn-active{
+.btn-login:hover,
+.btn-login:active,
+.btn-login:focus,
+.btn-active {
   background-color: #ffd147;
 }

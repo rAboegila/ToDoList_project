@@ -1,13 +1,15 @@
-<nav class=" navbar navbar-expand-sm navbar-light ">
-    <div class="container-fluid">
-        <div class="d-flex align-items-start">
-            <button class="btn btn-login btn-lg mt-3" *ngIf="!isLogin" routerLink="/about"
-                routerLinkActive="btn-active"> About Us</button>
-            <button class="btn btn-login btn-lg mt-3" *ngIf="!isLogin" routerLink="/register"
-                routerLinkActive="btn-active"> Register</button>
-            <button class="btn btn-login btn-lg ms-3 mt-3" *ngIf="!isLogin" routerLink="/login"
-                routerLinkActive="btn-active"> Login</button>
-            <button class="btn btn-login btn-lg" *ngIf="isLogin" (click)="logout()">Log Out</button>
+<nav class=" navbar navbar-expand-md navbar-light ">
+    <div class="container-fluid  d-flex align-items-start mt-2 ">
+        <div class="d-flex align-items-start ">
+            <button class="btn btn-login me-2 btn-lg " routerLink="/about" routerLinkActive="btn-active"> About
+                Us</button>
+            <button class="btn btn-login me-2  btn-lg " *ngIf="!isLogin" routerLink="/register"
+                routerLinkActive="btn-active">
+                Register</button>
+            <button class="btn btn-login me-2 btn-lg " *ngIf="!isLogin" routerLink="/login"
+                routerLinkActive="btn-active">
+                Login</button>
+            <button class="btn btn-login me-2  btn-lg " *ngIf="isLogin" (click)="logout()">Log Out</button>
         </div>
         <ng-container *ngIf="isLogin && user">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -17,16 +19,16 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 
-                <ul class="navbar-nav mb-2 mb-lg-0">
+                <ul class="navbar-nav ">
                     <li class="navItem nav-item ">
                         <a class="nav-link" routerLink="todos/all" routerLinkActive="active-link" (click)="showAll()">
-                            <i class="text-warning fs-1 bi bi-list-check"></i>
+                            <i id="all" class="text-warning fs-1 bi bi-list-check"></i>
                         </a>
                     </li>
                     <li class="navItem nav-item ">
                         <a class="nav-link" routerLink="todos/favourite" routerLinkActive="active-link"
                             (click)="showFav()">
-                            <i class="text-danger fs-1 bi bi-heart-fill"></i>
+                            <i id="fav" class="text-danger fs-1 bi bi-heart-fill"></i>
                             <span class="badge notification rounded-pill bg-secondary ">{{counters.favCount}}%</span>
 
                         </a>
@@ -34,14 +36,14 @@
                     <li class="navItem nav-item ">
                         <a class="nav-link" routerLink="todos/deleted" routerLinkActive="active-link"
                             (click)="showDeleted()">
-                            <i class="text-primary fs-1 bi bi-archive-fill"></i>
+                            <i id="deleted" class="text-primary fs-1 bi bi-archive-fill"></i>
                             <span class="badge  notification bg-secondary ">{{counters.deletedCount}}%</span>
                         </a>
                     </li>
                     <li class="navItem nav-item ">
                         <a class="nav-link " routerLink="todos/completed" routerLinkActive="active-link"
                             (click)="showCompeleted()">
-                            <i class="text-success fs-1 bi bi-check-square-fill"></i>
+                            <i id="complete" class="text-success fs-1 bi bi-check-square-fill"></i>
                             <span class="badge notification bg-secondary">{{counters.completedCount}}%</span>
 
                         </a>

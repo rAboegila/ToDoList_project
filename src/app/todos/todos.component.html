@@ -1,47 +1,74 @@
 <app-qoute></app-qoute>
-<section class="mx-auto p-2 rounded shadow mb-5" style="background-color: #f7eef0">
-  <div>
-    <form #taskForm="ngForm" (ngSubmit)="submitMyTodo(taskForm)" *ngIf="todosCategory ==='all'">
-      <div class="form-group align-items-center justify-content-around mx-2">
-        <div>
-          <div class="d-flex align-items-center">
-            <input #title="ngModel" type="text" class="form-control me-1 my-2" placeholder="Begin new Achievment"
-              autocomplete="off" required minlength="3" name="title" ngModel />
-            <button type="submit" class="btn btn-danger">
-              Add
-            </button>
+<section class="mx-auto p-2  mb-5">
+  <div class="">
+    <!-- <form #taskForm="ngForm" (ngSubmit)="submitMyTodo(taskForm)" *ngIf="todosCategory ==='all'">
+      <div class="align-items-center justify-content-around mx-2">
+        <div class="">
+          <div class="form-row d-flex  align-items-center">
+            <div class="col-sm-4 col-md-6 me-1">
+              <input #title="ngModel" type="text" class="form-control me-1 my-2 " placeholder="Begin new Achievement"
+                autocomplete="off" required minlength="3" name="title" ngModel />
+            </div>
+            <div class="col-sm-2 col-md-3 me-1">
+              <select class="form-select" aria-label="Default select example" name="priority" [(ngModel)]="priority">
+                <option value="Low" selected>Select Priority</option>
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+            <div class="col-sm-2 col-md-2 me-1">
+              <input [min]="minDate" [max]="maxDate" name="deadline" ngModel type="date">
+            </div>
+            <div class="col-sm-2 col-md-1 me-1">
+              <button type="submit" class="btn btn-danger ">
+                Add
+              </button>
+            </div>
           </div>
+
           <p *ngIf="(title.touched && title.errors)" class="text-danger text-uppercase">Title is required</p>
           <p *ngIf="title.touched && title.errors?.['title']" class="text-danger text-uppercase">Title is not valid
           </p>
-          <div class="d-flex align-items-center justify-content-around flex-column flex-md-row">
-            <div>
-              <input type="radio" class="form-check-input me-1 my-2" name="priority" value="High" required
-                [(ngModel)]="priority" />
-              <label class="form-check-label text-danger">High</label>
-            </div>
-            <div>
-              <input type="radio" class="form-check-input mx-1 my-2" name="priority" value="Moderate" required
-                [(ngModel)]="priority" />
-              <label class="form-check-label mx-1 text-info">Moderate</label>
-            </div>
-            <div>
-              <input type="radio" class="form-check-input mx-1 my-2" name="priority" value="Low" required
-                [(ngModel)]="priority" />
-              <label class="form-check-label mx-1 text-success">Low</label>
-            </div>
-            <input [min]="minDate" [max]="maxDate" name="deadline" ngModel type="date">
-
-          </div>
         </div>
+      </div>
+    </form> -->
+    <form #taskForm="ngForm" (ngSubmit)="submitMyTodo(taskForm)" *ngIf="todosCategory ==='all'"
+      class="row row-cols-md-auto row-cols-lg-auto g-1 align-items-center d-flex justify-content-center">
+      <div class=" col-md-3 col-lg-6 col-12">
+
+        <input #title="ngModel" type="text" class="form-control  me-1 my-2 " placeholder="Begin new Achievement"
+          autocomplete="off" required minlength="3" name="title" ngModel />
+
+      </div>
+
+      <div class=" col-lg-3 col-12">
+        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+        <select class="form-select" aria-label="Default select example" name="priority" [(ngModel)]="priority">
+          <option value="Low" selected>Select Priority</option>
+          <option value="Low">Low</option>
+          <option value="Moderate">Moderate</option>
+          <option value="High">High</option>
+        </select>
+      </div>
+
+      <div class="col-lg-2 col-12">
+        <input [min]="minDate" [max]="maxDate" name="deadline" ngModel type="date">
+      </div>
+
+      <div class="col-lg-1 col-12">
+        <button type="submit" class="btn btn-danger ">
+          Add
+        </button>
       </div>
     </form>
     <br />
   </div>
-  <div>
+
+  <div style="background-color: #ffffff" class="rounded shadow">
     <ul class="ps-0">
-      <div *ngIf="!filteredTodos.length && todosCategory !== 'all'">
-        <h2 class="text-center">nothing in {{todosCategory}} yet</h2>
+      <div class="py-2">
+        <h5 *ngIf="!filteredTodos.length" class="text-center">nothing in {{todosCategory}} yet</h5>
       </div>
       <app-todo *ngFor="let todo of filteredTodos" [todo]="todo" [todosCategory]="todosCategory"
         (deleteTodoEvent)="editTodoStatus(todo, 'deleted')" (completeTodoEvent)="editTodoStatus(todo, 'completed')"
