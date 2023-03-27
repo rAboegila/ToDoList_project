@@ -1,7 +1,12 @@
 <ng-container *ngIf="todo">
-  <div class="w-75 m-auto shadow rounded my-4" id="details">
+  <div class="row w-75 m-auto shadow rounded my-4 align-items-center" id="details">
+    <div class="col-md-6">
     <div class="text-center">
-      <h1>{{ todo.title }}</h1>
+      <h1>{{ todo.title }}
+        <i [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="text-danger fs-2 bi px-2"></i>
+        <i [ngClass]="todo.status.completed ? 'bi bi-check text-success':'bi bi-x text-danger'"
+          class="text-success fs-1 bi px-2" style="font-size: 200px;"></i>
+      </h1>
       <br />
       <p *ngIf="todo.description">
         {{ todo.description }}
@@ -9,16 +14,13 @@
 
       <h3>
         priority: {{ todo.priority }}
-        <i class="bi bi-square-fill" [ngClass]="
+        <i class="bi bi-square-fill px-2 fs-2" [ngClass]="
           todo.priority === 'High'
             ? ' bi bi-square-fill  high'
             : todo.priority === 'Moderate'
             ? ' bi bi-square-fill  moderate'
             : ' bi bi-square-fill  low'
         "></i>
-        <i [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="text-danger fs-5 bi"></i>
-        <i [ngClass]="todo.status.completed ? 'bi bi-check text-success':'bi bi-x text-danger'"
-          class="text-success fs-5 bi" style="font-size: large;"></i>
       </h3>
       <br>
       <h3 class="counter mx-auto shadow rounded" *ngIf="!todo.status.completed">{{tickTock}}</h3>
@@ -39,6 +41,14 @@
         <input type="checkbox" [checked]="step.isChecked" (click)="toggleStepState(step)" /> <span class="ms-1"
           [ngClass]=" step.isChecked ? 'text-decoration-line-through' : 'text-decoration-none'"> {{ step.text }}</span>
       </li>
-    </ul>
+    </ul>  
+  </div>
+    <div  class="col-md-6">
+    <div class="container" fxLayout="row" fxFlex="100%" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+        <mat-card class="w-75">
+          <mat-calendar   [minDate]="today" [(selected)]="todo.deadline" (selectedChange)="onSelect($event)"></mat-calendar>
+        </mat-card>
+      </div>
+    </div>
   </div>
 </ng-container>

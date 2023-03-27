@@ -1,4 +1,4 @@
-/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+@import '../../../node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 #details{
    background-color: #f7eef0;
@@ -34,6 +34,12 @@
 
 .steps-form{
     width: 50%;
+}
+
+
+.mat-calendar-body-active > .mat-calendar-body-today {
+    color: red;
+    background-color: blue;
 }
 
 @media only screen and (max-width: 600px) {

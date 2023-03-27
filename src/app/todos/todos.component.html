@@ -68,7 +68,7 @@
   <div style="background-color: #ffffff" class="rounded shadow">
     <ul class="ps-0">
       <div class="py-2">
-        <h5 *ngIf="!filteredTodos.length" class="text-center">nothing in {{todosCategory}} yet</h5>
+        <h5 *ngIf="!filteredTodos.length" class="text-center">nothing in This list yet</h5>
       </div>
       <app-todo *ngFor="let todo of filteredTodos" [todo]="todo" [todosCategory]="todosCategory"
         (deleteTodoEvent)="editTodoStatus(todo, 'deleted')" (completeTodoEvent)="editTodoStatus(todo, 'completed')"

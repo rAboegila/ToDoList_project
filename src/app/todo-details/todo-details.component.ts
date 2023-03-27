@@ -8,7 +8,7 @@ import { Todo, todoStep } from '../lib';
   templateUrl: './todo-details.component.html',
   styleUrls: ['./todo-details.component.css']
 })
-export class TodoDetailsComponent implements AfterViewInit {
+export class TodoDetailsComponent  {
 
   todo!: Todo;
   step: string = "";
@@ -20,7 +20,13 @@ export class TodoDetailsComponent implements AfterViewInit {
   constructor(private _todosService: TodosService, private _ActivatedRoute: ActivatedRoute) {
     _todosService.getTodoById(_ActivatedRoute.snapshot.params['id']).subscribe({
       next: (value) => {
+        
         this.todo = value.data;
+        console.log(this.todo.deadline);
+        
+        this.tickTockInterval = setInterval(() => {
+          this.countDown()
+        }, 1000);
       },
       error(err) {
         alert(err.error.message);
@@ -31,6 +37,7 @@ export class TodoDetailsComponent implements AfterViewInit {
   onSelect(newDate: Date) {
     this._todosService.UpdateTodoDate(this.todo._id, newDate).subscribe({
       next: (res) => {
+        console.log(res);
         this.todo.deadline = res.deadline;
       },
       error: (err) => {
@@ -66,10 +73,5 @@ export class TodoDetailsComponent implements AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
-    this.tickTockInterval = setInterval(() => {
-      this.countDown()
-    }, 1000);
-  }
 }
 
