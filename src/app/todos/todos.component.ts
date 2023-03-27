@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Todo, TodoFilter, TodoStatus } from '../lib';
 import { TodosService } from '../todos.service';
 
@@ -22,7 +22,7 @@ export class TodosComponent {
 
   todoStatus!: TodoStatus;
 
-  constructor(private _todosService: TodosService, private _activatedRoute: ActivatedRoute) {
+  constructor(private _todosService: TodosService, private _activatedRoute: ActivatedRoute, private _router: Router) {
     this._todosService.status$.subscribe((res) => {
       this.todosCategory = res;
       this.getTodos(res)

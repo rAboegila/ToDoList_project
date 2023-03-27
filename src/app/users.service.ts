@@ -24,6 +24,7 @@ export class UsersService {
   }
 
   isLoggedIn(): boolean {
+    if(this._cookieService.get('token')) this.loggedIn.next(true)
     return this.loggedIn.getValue()
   }
 
@@ -34,7 +35,6 @@ export class UsersService {
   logout() {
     this._cookieService.delete('token');
     this.loggedIn.next(false);
-    location.reload();
     this._router.navigate(['/']);
   }
 

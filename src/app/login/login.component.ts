@@ -20,6 +20,7 @@ export class LoginComponent {
   }
   login(form: NgForm) {
     this._UsersService.login(form.value).subscribe((res: any) => {
+      this._cookieService.delete('token');
       this._cookieService.set('token', res.token);
       this._UsersService.AuthenticateUser();
       this._todosService.setFilter(TodoFilter.ALL)

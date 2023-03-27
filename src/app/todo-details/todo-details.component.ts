@@ -16,9 +16,9 @@ export class TodoDetailsComponent implements AfterViewInit {
   steps: todoStep[] = [];
   today: Date = new Date()
   tickTock!: string;
-
-  constructor(private _todosService: TodosService, private _router: ActivatedRoute) {
-    _todosService.getTodoById(_router.snapshot.params['id']).subscribe({
+  tickTockInterval!:any;
+  constructor(private _todosService: TodosService, private _ActivatedRoute: ActivatedRoute) {
+    _todosService.getTodoById(_ActivatedRoute.snapshot.params['id']).subscribe({
       next: (value) => {
         this.todo = value.data;
       },
@@ -59,11 +59,15 @@ export class TodoDetailsComponent implements AfterViewInit {
     let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    this.tickTock = `${days}d  ${hours}h ${minutes}m ${seconds}s`
+    this.tickTock = `${days}d  ${hours}h ${minutes}m ${seconds}s left`
+    if (seconds<0) {
+      clearInterval(this.tickTockInterval);
+      this.tickTock = 'You missed the deadline!'
+    }
   }
 
   ngAfterViewInit(): void {
-    setInterval(() => {
+    this.tickTockInterval = setInterval(() => {
       this.countDown()
     }, 1000);
   }

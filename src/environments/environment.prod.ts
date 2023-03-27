@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: "http://localhost:3030/"
+  baseUrl: "https://todolist-8wip.onrender.com/"
 };
