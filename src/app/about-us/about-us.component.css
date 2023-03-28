@@ -1,6 +1,31 @@
-.hero {
-  background-color: rgba(252, 252, 246, 0.55);
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+html,
+body {
+  font-family: "Poppins", sans-serif;
+  place-items: center;
 }
+.hero {
+  background-color: rgba(252, 252, 246, 0.8);
+}
+.section {
+  background-color: rgba(252, 252, 246, 0.5);
+}
+.teamCard,
+#blue {
+  background-color: rgba(219, 252, 250, 0.6);
+  border: none;
+}
+.teamCard,
+#red {
+  background-color: rgba(252, 229, 219, 0.6);
+  border: none;
+}
+.teamCard,
+#green {
+  background-color: rgba(219, 252, 226, 0.6);
+  border: none;
+}
+
 #angular {
   color: #e01b24;
 }
@@ -12,4 +37,44 @@
 }
 #node {
   color: #26a269;
+}
+#github {
+  color: #4078c0;
+}
+
+.cardDescription {
+  color: #bd2c00;
+}
+
+@media (width <= 768px) {
+  .hide {
+    display: none !important;
+  }
+  .navbar-nav {
+    flex-direction: row;
+    margin-top: 5px;
+    margin-top: 20px;
+    margin-left: 31px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #docSection {
+    flex-direction: column;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .hero {
+    width: 95%;
+    margin-left: 0.7rem;
+  }
+}
+.bi-linkedin:hover {
+  color: #1a5fb4;
+}
+.bi-github:hover {
+  color: #c9510c;
 }

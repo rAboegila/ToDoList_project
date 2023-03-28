@@ -81,12 +81,17 @@ import { RegisterComponent } from &#x27;./register/register.component&#x27;;
 import { TodoDetailsComponent } from &#x27;./todo-details/todo-details.component&#x27;;
 import { TodosComponent } from &#x27;./todos/todos.component&#x27;;
 import { NavbarComponent } from &#x27;./navbar/navbar.component&#x27;;
+import { UserDetailsComponent } from &#x27;./user-details/user-details.component&#x27;;
+import { AboutUsComponent } from &#x27;./about-us/about-us.component&#x27;;
 
 const routes: Routes &#x3D; [
   { path: &#x27;&#x27;, redirectTo: &#x27;login&#x27;, pathMatch: &#x27;full&#x27; },
   { path: &#x27;login&#x27;, component: LoginComponent },
   { path: &#x27;register&#x27;, component: RegisterComponent },
-  { path: &#x27;todos&#x27;, redirectTo: &#x27;todos/all&#x27;, pathMatch: &#x27;full&#x27;},
+  { path: &#x27;user&#x27;, component: UserDetailsComponent },
+  { path: &#x27;todos&#x27;, redirectTo: &#x27;todos/all&#x27;, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;about&#x27;, component: AboutUsComponent },
+  { path: &#x27;todos&#x27;, redirectTo: &#x27;todos/all&#x27;, pathMatch: &#x27;full&#x27; },
   { path: &#x27;todos/:status&#x27;, component: TodosComponent, canActivate: [AuthGuard] },
   { path: &#x27;todo/:id&#x27;, component: TodoDetailsComponent, canActivate: [AuthGuard] },
   { path: &#x27;**&#x27;, component: NotfoundComponent }

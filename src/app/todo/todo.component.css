@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
 
 .normal {
   text-decoration: none;
@@ -8,7 +8,7 @@
 .todo:hover {
   background-color: rgba(150, 255, 155, 0.15);
 }
-.completed{
+.completed {
   text-decoration: line-through;
 }
 
@@ -23,7 +23,7 @@
 .todo:hover #deleteIcon {
   display: inline;
 }
-.todo{
-  font-family: 'Handlee', cursive;
+.todo {
+  /* font-family: 'Handlee', cursive; */
   font-size: 1.3rem;
 }

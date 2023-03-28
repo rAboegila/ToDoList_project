@@ -84,6 +84,7 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#id" 
 >
                                             id
@@ -96,6 +97,7 @@
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#password" 
 >
                                             password
@@ -108,9 +110,9 @@
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#username" 
+                                        <a href="#userName" 
 >
-                                            username
+                                            userName
                                         </a>
                                 </li>
                             </ul>
@@ -151,6 +153,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -217,6 +224,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -260,9 +272,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="username"></a>
-                                        <span class="name "><b>username</b>
-                                            <a href="#username">
+                                        <a name="userName"></a>
+                                        <span class="name "><b>userName</b>
+                                            <a href="#userName">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -270,7 +282,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>username:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>userName:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -294,21 +306,30 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Todo {
-  readonly id: number;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export type todoStep &#x3D; {
+   text:string;
+   isChecked:boolean;
+}
+
+export interface Todo {
+  readonly _id: number;
   title: string;
   status: {
     completed: boolean;
     favourite: boolean;
     deleted: boolean;
   };
+  priority?: string;
+  deadline: Date;
+  steps?:todoStep[];
+  description?: string;
 }
 export interface User {
-  readonly id: number;
-  username: string;
+  readonly id?: number;
+  userName: string;
   quote: string;
   loggedIn: boolean;
-  password: string;
+  password?: string;
 }
 
 export enum TodoFilter {
@@ -319,8 +340,11 @@ export enum TodoFilter {
 }
 
 export enum TodoStatus {
+
   FAVOURITE &#x3D; &#x27;favourite&#x27;,
   COMPLETED &#x3D; &#x27;completed&#x27;,
+  DELETED &#x3D; &#x27;deleted&#x27;,
+
 }
 </code></pre>
     </div>

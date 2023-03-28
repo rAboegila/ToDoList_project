@@ -1,53 +1,57 @@
-@import '../../../node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import "../../../node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css";
 
-#details{
-   background-color: #f7eef0;
-   padding: 20px;
-   margin-top: 200px;
+#details {
+  background-color: #f7eef0;
+  padding: 20px;
+  margin-top: 200px;
 }
 
 /* CSS alternative */
-::ng-deep .mat-calendar-body-active , .mat-calendar-body-selected{
-    color: firebrick;
+::ng-deep .mat-calendar-body-active,
+.mat-calendar-body-selected {
+  color: firebrick;
 }
 
-.high
-{
-    color: red;
+.high {
+  background-color: red;
+  color: white;
 }
 
-.moderate
-{
-    color: rgb(232, 194, 45);
+.moderate {
+  background-color: rgb(232, 194, 45);
+  color: white;
 }
 
-.low
-{
-    color: rgb(154, 232, 45);
+.low {
+  background-color: rgb(88, 151, 0);
+  color: white;
 }
 
-.counter{
-    background: #dfd8d8;
-    width: fit-content;
-    padding: 2rem 4rem;
+.counter {
+  background: #dfd8d8;
+  width: fit-content;
+  padding: 2rem 4rem;
 }
 
-.steps-form{
-    width: 50%;
+.steps-form {
+  width: 50%;
 }
-
 
 .mat-calendar-body-active > .mat-calendar-body-today {
-    color: red;
-    background-color: blue;
+  color: red;
+  background-color: blue;
 }
-
+.steps-list {
+  padding-left: 11rem;
+}
 @media only screen and (max-width: 600px) {
-    .steps-form{
-        width: 95%;
-        flex-direction: column;
-    }
-    .steps-form button{
-        margin-top:0.5rem
-    }
+  .steps-form {
+    width: 95%;
+  }
+  .steps-form button {
+    margin-top: 0.5rem;
+  }
+  .steps-list {
+    padding-left: 2rem;
+  }
 }

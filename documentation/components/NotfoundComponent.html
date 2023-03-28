@@ -141,8 +141,16 @@ export class NotfoundComponent {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;p&gt;notfound works!&lt;/p&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;d-flex align-items-center justify-content-center vh-100&quot;&gt;
+    &lt;div class&#x3D;&quot;text-center&quot;&gt;
+        &lt;h1 class&#x3D;&quot;display-1 fw-bold&quot;&gt;404&lt;/h1&gt;
+        &lt;p class&#x3D;&quot;fs-3&quot;&gt; &lt;span class&#x3D;&quot;text-danger&quot;&gt;Opps!&lt;/span&gt; Page not found.&lt;/p&gt;
+        &lt;p class&#x3D;&quot;lead&quot;&gt;
+            The page you’re looking for doesn’t exist.
+        &lt;/p&gt;
+        &lt;a routerLink&#x3D;&quot;/&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Go Home&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-styleData">
@@ -177,8 +185,8 @@ export class NotfoundComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><p>notfound works!</p></div>'
-    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'TodoComponent', 'selector': 'app-todo'},{'name': 'TodoDetailsComponent', 'selector': 'app-todo-details'},{'name': 'TodosComponent', 'selector': 'app-todos'}];
+        var COMPONENT_TEMPLATE = '<div><div class="d-flex align-items-center justify-content-center vh-100">    <div class="text-center">        <h1 class="display-1 fw-bold">404</h1>        <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>        <p class="lead">            The page you’re looking for doesn’t exist.        </p>        <a routerLink="/" class="btn btn-primary">Go Home</a>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutUsComponent', 'selector': 'app-about-us'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotfoundComponent', 'selector': 'app-notfound'},{'name': 'QouteComponent', 'selector': 'app-qoute'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'TodoComponent', 'selector': 'app-todo'},{'name': 'TodoDetailsComponent', 'selector': 'app-todo-details'},{'name': 'TodosComponent', 'selector': 'app-todos'},{'name': 'UserAgentComponent', 'selector': 'app-user-agent'},{'name': 'UserDetailsComponent', 'selector': 'app-user-details'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NotfoundComponent'};
 </script>

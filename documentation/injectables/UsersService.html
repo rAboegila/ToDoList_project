@@ -99,6 +99,15 @@
                                 <a href="#AuthenticateUser" >AuthenticateUser</a>
                             </li>
                             <li>
+                                <a href="#checkIfOnline" >checkIfOnline</a>
+                            </li>
+                            <li>
+                                <a href="#getBrowserName" >getBrowserName</a>
+                            </li>
+                            <li>
+                                <a href="#getOS" >getOS</a>
+                            </li>
+                            <li>
                                 <a href="#getUser" >getUser</a>
                             </li>
                             <li>
@@ -131,12 +140,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(_http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+<code>constructor(_http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, _cookieService: CookieService, _router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/users.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/users.service.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -158,6 +167,30 @@
                                                   
                                                         <td>
                                                                         <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_cookieService</td>
+                                                  
+                                                        <td>
+                                                                    <code>CookieService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -199,8 +232,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">src/app/users.service.ts:28</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/users.service.ts:31</a></div>
                 </td>
             </tr>
 
@@ -210,6 +243,117 @@
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkIfOnline"></a>
+                    <span class="name">
+                        <span ><b>checkIfOnline</b></span>
+                        <a href="#checkIfOnline"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkIfOnline()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">src/app/users.service.ts:86</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBrowserName"></a>
+                    <span class="name">
+                        <span ><b>getBrowserName</b></span>
+                        <a href="#getBrowserName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBrowserName()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/users.service.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;Microsoft Edge&quot; | &quot;Opera&quot; | &quot;Google Chrome&quot; | &quot;ie&quot; | &quot;FireFox&quot; | &quot;Safari&quot; | &quot;other&quot;</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getOS"></a>
+                    <span class="name">
+                        <span ><b>getOS</b></span>
+                        <a href="#getOS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getOS()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/users.service.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>&quot;Windows OS&quot; | &quot;Macintosh&quot; | &quot;Linux OS&quot; | &quot;Android OS&quot; | &quot;iOS&quot; | &quot;UNIX OS&quot; | &quot;Unknown OS&quot;</code>
 
                     </div>
                 </td>
@@ -236,8 +380,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">src/app/users.service.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/users.service.ts:41</a></div>
                 </td>
             </tr>
 
@@ -273,8 +417,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/users.service.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/users.service.ts:26</a></div>
                 </td>
             </tr>
 
@@ -303,15 +447,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>login(userName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>login(formValues: literal type)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app/users.service.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">src/app/users.service.ts:22</a></div>
                 </td>
             </tr>
 
@@ -332,21 +476,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>userName</td>
+                                    <td>formValues</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>password</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <code>literal type</code>
                                     </td>
 
                                     <td>
@@ -391,8 +523,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/users.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/users.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -428,8 +560,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">src/app/users.service.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/users.service.ts:18</a></div>
                 </td>
             </tr>
 
@@ -501,7 +633,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/users.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/users.service.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -526,7 +658,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/users.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/users.service.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -541,6 +673,8 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { CookieService } from &#x27;ngx-cookie-service&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 import { environment } from &#x27;src/environments/environment.prod&#x27;;
 
@@ -552,17 +686,18 @@ export class UsersService {
   loggedIn &#x3D; new BehaviorSubject(false)
   loggedIn$ &#x3D; this.loggedIn.asObservable();
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _cookieService: CookieService, private _router: Router) { }
 
   register(formValues: { userName: string, password: string, quote: string }) {
-    return this._http.post(&#x60;${environment.baseUrl}users&#x60;, formValues)
+    return this._http.post(&#x60;${environment.baseUrl}users/register&#x60;, formValues)
   }
 
-  login(userName: string, password: string) {
-    return this._http.post(&#x60;${environment.baseUrl}users/signin&#x60;, { userName, password })
+  login(formValues: { userName: string, password: string }) {
+    return this._http.post(&#x60;${environment.baseUrl}users/signin&#x60;, formValues)
   }
 
   isLoggedIn(): boolean {
+    if(this._cookieService.get(&#x27;token&#x27;)) this.loggedIn.next(true)
     return this.loggedIn.getValue()
   }
 
@@ -571,15 +706,58 @@ export class UsersService {
   }
 
   logout() {
+    this._cookieService.delete(&#x27;token&#x27;);
     this.loggedIn.next(false);
+    this._router.navigate([&#x27;/&#x27;]);
   }
 
   getUser() {
-    let token: any &#x3D; localStorage.getItem(&#x27;token&#x27;);    
-    const httpOptions &#x3D; {
-      headers: new HttpHeaders().set(&quot;Authorization&quot;, token)
-    };
-    return this._http.get(&#x60;${environment.baseUrl}users&#x60;, httpOptions)
+    return this._http.get(&#x60;${environment.baseUrl}users&#x60;)
+  }
+
+  getBrowserName() {
+    const agent &#x3D; navigator.userAgent.toLowerCase()
+    switch (true) {
+      case agent.indexOf(&#x27;edg&#x27;) !&#x3D; -1:
+        return &#x27;Microsoft Edge&#x27;;
+      case agent.indexOf(&#x27;opr&#x27;) !&#x3D; -1 &amp;&amp; !!(&lt;any&gt;window).opr:
+        return &#x27;Opera&#x27;;
+      case agent.indexOf(&#x27;chrome&#x27;) !&#x3D; -1 &amp;&amp; !!(&lt;any&gt;window).chrome:
+        return &#x27;Google Chrome&#x27;;
+      case agent.indexOf(&#x27;trident&#x27;) !&#x3D; -1:
+        return &#x27;ie&#x27;;
+      case agent.indexOf(&#x27;firefox&#x27;) !&#x3D; -1:
+        return &#x27;FireFox&#x27;;
+      case agent.indexOf(&#x27;safari&#x27;) !&#x3D; -1:
+        return &#x27;Safari&#x27;;
+      default:
+        return &#x27;other&#x27;;
+    }
+  }
+  getOS() {
+    const agent &#x3D; navigator.userAgent.toLowerCase()
+    switch (true) {
+      case agent.indexOf(&quot;win&quot;) !&#x3D; -1:
+        return &quot;Windows OS&quot;;
+      case agent.indexOf(&quot;mac&quot;) !&#x3D; -1:
+        return &quot;Macintosh&quot;;
+      case agent.indexOf(&quot;linux&quot;) !&#x3D; -1:
+        return &quot;Linux OS&quot;;
+      case agent.indexOf(&quot;android&quot;) !&#x3D; -1:
+        return &quot;Android OS&quot;;
+      case agent.indexOf(&quot;like mac&quot;) !&#x3D; -1:
+        return &quot;iOS&quot;;
+      case agent.indexOf(&quot;x11&quot;) !&#x3D; -1:
+        return &quot;UNIX OS&quot;;
+      default:
+        return &quot;Unknown OS&quot;;
+    }
+  }
+
+
+
+  checkIfOnline() {
+    return navigator.onLine;
   }
 }
 </code></pre>

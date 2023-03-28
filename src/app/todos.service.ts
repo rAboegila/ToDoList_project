@@ -27,8 +27,10 @@ export class TodosService {
 
     if (newTodo.deadline == "")
       newTodo.deadline = tomorrow.toISOString().split('T')[0];
-    if (newTodo.priority == "")
+    if (newTodo.priority == "" || newTodo.priority == null) {
       newTodo.priority = "Low"
+    }
+    console.log(newTodo.priority);
     return this._http.post<any>(`${environment.baseUrl}todos`, newTodo
     )
   }

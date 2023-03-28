@@ -1,52 +1,54 @@
 <ng-container *ngIf="todo">
   <div class="row w-75 m-auto shadow rounded my-4 align-items-center" id="details">
     <div class="col-md-6">
-    <div class="text-center">
-      <h1>{{ todo.title }}
-        <i [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'" class="text-danger fs-2 bi px-2"></i>
-        <i [ngClass]="todo.status.completed ? 'bi bi-check text-success':'bi bi-x text-danger'"
-          class="text-success fs-1 bi px-2" style="font-size: 200px;"></i>
-      </h1>
-      <br />
-      <p *ngIf="todo.description">
-        {{ todo.description }}
-      </p>
+      <div class="text-center">
+        <h1>{{ todo.title }}
+          <i [ngClass]="todo.status.favourite ? 'bi-suit-heart-fill':'bi-suit-heart'"
+            class="text-danger fs-2 bi px-2"></i>
+          <i [ngClass]="todo.status.completed ? 'bi bi-check-square-fill text-success':'bi bi-slash-square-fill text-danger'"
+            class="text-success fs-2 bi px-2" style="font-size: 200px;"></i>
+        </h1>
+        <br />
+        <p *ngIf="todo.description">
+          {{ todo.description }}
+        </p>
 
-      <h3>
-        priority: {{ todo.priority }}
-        <i class="bi bi-square-fill px-2 fs-2" [ngClass]="
-          todo.priority === 'High'
-            ? ' bi bi-square-fill  high'
-            : todo.priority === 'Moderate'
-            ? ' bi bi-square-fill  moderate'
-            : ' bi bi-square-fill  low'
-        "></i>
-      </h3>
-      <br>
-      <h3 class="counter mx-auto shadow rounded" *ngIf="!todo.status.completed">{{tickTock}}</h3>
-      <h3 class="counter mx-auto shadow rounded" *ngIf="todo.status.completed">Task finished</h3>
-      <br>
-      <br>
+        <h3>
+          Priority:
+
+          <p class="d-inline rounded  fs-5 p-1"
+            [ngClass]="todo.priority === 'High'? 'high': todo.priority === 'Moderate' ? '  moderate' : ' low' ">
+            {{todo.priority}}</p>
+        </h3>
+        <br>
+        <h3 class="counter mx-auto shadow rounded" *ngIf="!todo.status.completed">{{tickTock}}</h3>
+        <h3 class="counter mx-auto shadow rounded" *ngIf="todo.status.completed">Task finished</h3>
+        <br>
+        <br>
+      </div>
+      <form #stepsForm="ngForm" (ngSubmit)="modifySteps(stepsForm)">
+        <div class="d-flex align-items-center justify-content-between m-auto steps-form">
+          <input class="form-control" type="text" name="step" id="step" [(ngModel)]="step"
+            placeholder="add steps to your todo" />
+          <button class="ms-2 btn btn-danger" type="submit">
+            <i class="bi bi-plus-circle-fill"></i>
+          </button>
+        </div>
+      </form>
+      <ul class="text-left mt-2 steps-list">
+        <li class="list-group-item fs-5" *ngFor="let step of todo.steps">
+          <input type="checkbox" [checked]="step.isChecked" (click)="toggleStepState(step)" /> <span class="ms-1"
+            [ngClass]=" step.isChecked ? 'text-decoration-line-through' : 'text-decoration-none'"> {{ step.text
+            }}</span>
+        </li>
+      </ul>
     </div>
-    <div class="d-flex align-items-center justify-content-between m-auto steps-form">
-      <input class="form-control" type="text" name="step" id="step" [(ngModel)]="step"
-        placeholder="add steps to your todo" />
-      <button class="btn btn-danger" type="button" (click)="modifySteps()">
-        Add
-      </button>
-    </div>
-    <br />
-    <ul class="text-center">
-      <li class="list-group-item fs-3" *ngFor="let step of todo.steps">
-        <input type="checkbox" [checked]="step.isChecked" (click)="toggleStepState(step)" /> <span class="ms-1"
-          [ngClass]=" step.isChecked ? 'text-decoration-line-through' : 'text-decoration-none'"> {{ step.text }}</span>
-      </li>
-    </ul>  
-  </div>
-    <div  class="col-md-6">
-    <div class="container" fxLayout="row" fxFlex="100%" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <div class="col-md-6">
+      <div class="container" fxLayout="row" fxFlex="100%" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%"
+        fxLayoutAlign="center">
         <mat-card class="w-75">
-          <mat-calendar   [minDate]="today" [(selected)]="todo.deadline" (selectedChange)="onSelect($event)"></mat-calendar>
+          <mat-calendar [minDate]="today" [(selected)]="todo.deadline"
+            (selectedChange)="onSelect($event)"></mat-calendar>
         </mat-card>
       </div>
     </div>
