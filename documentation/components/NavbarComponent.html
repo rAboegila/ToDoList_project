@@ -790,22 +790,36 @@ export class NavbarComponent {
 .active-link &gt; #all {
   /* background-color: #f6e1e6; */
   color: #daa506 !important;
+  border-bottom: 2px solid #daa506;
+}
+#all:hover {
+  color: #daa506 !important;
 }
 #all {
   background-color: rgba(250, 237, 221, 0.45);
 }
+
 .active-link &gt; #fav {
-  /* background-color: #f6e1e6; */
+  color: #b62a38 !important;
+  border-bottom: 2px solid #b62a38;
+}
+#fav:hover {
   color: #b62a38 !important;
 }
 
-.active-link &gt; #deleted {
-  /* background-color: #f6e1e6; */
+#deleted:hover {
   color: #0c5cd3 !important;
 }
-.active-link &gt; #complete {
-  /* background-color: #f6e1e6; */
+.active-link &gt; #deleted {
+  color: #0c5cd3 !important;
+  border-bottom: 2px solid #0c5cd3;
+}
+#complete:hover {
   color: #105a38 !important;
+}
+.active-link &gt; #complete {
+  color: #105a38 !important;
+  border-bottom: 2px solid #105a38;
 }
 .btn-login {
   background-color: #ffdf80;
