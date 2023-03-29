@@ -44,7 +44,7 @@
           Nothing To Do!<br> YAY!</h5>
         <h5 *ngIf="!filteredTodos.length &&  todosCategory != 'all' " [ngClass]="filteredTodos.length?  'my-2' : 'my-0'"
           class="text-center">You
-          Nothing added to this list yet!</h5>
+          haven't added to this list yet!</h5>
       </div>
       <app-todo *ngFor="let todo of filteredTodos" [todo]="todo" [todosCategory]="todosCategory"
         (deleteTodoEvent)="editTodoStatus(todo, 'deleted')" (completeTodoEvent)="editTodoStatus(todo, 'completed')"

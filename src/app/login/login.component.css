@@ -1,40 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&display=swap");
 
-form{
-    width: 50%;
-    background-color: #f7eef0;
-    padding: 2rem;
-    height: 100%;
+form {
+  width: 50%;
+  background-color: #f7eef0;
+  padding: 2rem;
+  height: 100%;
 }
 label,
 button {
-    font-size: 1.2rem;
-    font-family: 'Abhaya Libre', serif;
+  font-size: 1.2rem;
 }
 
 label {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .not-valid {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .valid {
-    border: 1px solid green;
+  border: 1px solid green;
 }
-.btn-reg{
-    background-color: #ffd147;
-    display: block;
-    margin: auto;
+.btn-reg {
+  background-color: #ffd147;
+  display: block;
+  margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
-    form{
-        width: 75%;
-    }
+  form {
+    width: 75%;
+  }
 }
